@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewKost"
+        android:layout_width="170dp"
+        android:layout_height="250dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageViewKost"
+                android:layout_width="0dp"
+                android:layout_height="130dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/txtNamaKost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="monospace"
+                android:text="Nama Kost"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewKost" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaKost"
+                app:srcCompat="@drawable/baseline_location_on_24" />
+
+            <TextView
+                android:id="@+id/txtAlamatKost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="10dp"
+                android:text="Alamat"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="10sp"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/txtNamaKost" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Starts from"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+            <TextView
+                android:id="@+id/txtHargaKost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Price"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/design_default_color_error"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <Button
+                android:id="@+id/btnDetailKost"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="65dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="Detail"
+                android:textColor="#38D13F"
+                android:textSize="8sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imageViewKost"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewKost"
+                app:layout_constraintHorizontal_bias="0.483"
+                app:layout_constraintStart_toStartOf="@+id/imageViewKost"
+                app:layout_constraintTop_toTopOf="@+id/imageViewKost" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
