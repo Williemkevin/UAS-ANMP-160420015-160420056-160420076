@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.viewmodel
+package id.ac.ubaya.informatika.ubayakostuas.viewmodel
 
 import android.app.Application
 import android.util.Log
@@ -10,7 +10,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import id.ac.ubaya.informatika.ubayakost160420056.model.Kost
+import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 
 class DetailViewModel(application: Application) :AndroidViewModel(application) {
     val kostLD = MutableLiveData<Kost>()

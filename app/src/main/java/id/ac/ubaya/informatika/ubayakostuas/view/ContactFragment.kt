@@ -1,13 +1,12 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import id.ac.ubaya.informatika.ubayakost160420056.R
+import id.ac.ubaya.informatika.ubayakostuas.R
 
 class ContactFragment : BottomSheetDialogFragment() {
     override fun onCreateView(

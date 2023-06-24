@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056
+package id.ac.ubaya.informatika.ubayakostuas
 
 import org.junit.Test
 

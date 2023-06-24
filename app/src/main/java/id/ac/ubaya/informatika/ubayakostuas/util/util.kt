@@ -1,11 +1,11 @@
-package id.ac.ubaya.informatika.ubayakost160420056.util
+package id.ac.ubaya.informatika.ubayakostuas.util
 
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import id.ac.ubaya.informatika.ubayakost160420056.R
+import id.ac.ubaya.informatika.ubayakostuas.R
 import java.lang.Exception
 
 fun ImageView.loadImage(url: String?, progressBar:ProgressBar){

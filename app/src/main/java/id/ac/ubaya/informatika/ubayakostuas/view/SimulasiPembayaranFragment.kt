@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import android.widget.Toast
-import id.ac.ubaya.informatika.ubayakost160420056.R
+import id.ac.ubaya.informatika.ubayakostuas.R
 import java.text.NumberFormat
 import java.util.*
 

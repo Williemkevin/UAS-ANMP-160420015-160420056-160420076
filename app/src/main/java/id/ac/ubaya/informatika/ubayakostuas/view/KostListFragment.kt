@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,8 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import id.ac.ubaya.informatika.ubayakost160420056.R
-import id.ac.ubaya.informatika.ubayakost160420056.viewmodel.ListViewModel
+import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.viewmodel.ListViewModel
 
 
 class KostListFragment : Fragment() {

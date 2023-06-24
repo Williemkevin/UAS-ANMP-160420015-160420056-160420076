@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,13 +6,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
-import androidx.cardview.widget.CardView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import id.ac.ubaya.informatika.ubayakost160420056.R
-import id.ac.ubaya.informatika.ubayakost160420056.model.Kost
-import id.ac.ubaya.informatika.ubayakost160420056.util.loadImage
+import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.model.Kost
+import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList

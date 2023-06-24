@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056
+package id.ac.ubaya.informatika.ubayakostuas
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

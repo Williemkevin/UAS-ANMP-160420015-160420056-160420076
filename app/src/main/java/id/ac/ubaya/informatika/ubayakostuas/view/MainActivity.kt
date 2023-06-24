@@ -1,6 +1,5 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.drawerlayout.widget.DrawerLayout
@@ -10,7 +9,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
-import id.ac.ubaya.informatika.ubayakost160420056.R
+import id.ac.ubaya.informatika.ubayakostuas.R
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController

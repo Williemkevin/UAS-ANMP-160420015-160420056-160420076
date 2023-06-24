@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -12,9 +12,9 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import id.ac.ubaya.informatika.ubayakost160420056.R
-import id.ac.ubaya.informatika.ubayakost160420056.util.loadImage
-import id.ac.ubaya.informatika.ubayakost160420056.viewmodel.DetailViewModel
+import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
+import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
 import java.text.NumberFormat
 import java.util.*
 

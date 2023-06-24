@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'id.ac.ubaya.informatika.ubayakost160420056'
+    namespace 'id.ac.ubaya.informatika.ubayakostuas'
     compileSdk 33
 
     defaultConfig {
-        applicationId "id.ac.ubaya.informatika.ubayakost160420056"
+        applicationId "id.ac.ubaya.informatika.ubayakostuas"
         minSdk 24
         targetSdk 33
         versionCode 1

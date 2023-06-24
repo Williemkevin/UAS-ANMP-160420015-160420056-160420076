@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.model
+package id.ac.ubaya.informatika.ubayakostuas.model
 
 import com.google.gson.annotations.SerializedName
 

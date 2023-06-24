@@ -1,23 +1,17 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ProgressBar
-import android.widget.SearchView.OnQueryTextListener
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import id.ac.ubaya.informatika.ubayakost160420056.R
-import id.ac.ubaya.informatika.ubayakost160420056.model.Kost
-import id.ac.ubaya.informatika.ubayakost160420056.viewmodel.ListViewModel
+import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.model.Kost
+import id.ac.ubaya.informatika.ubayakostuas.viewmodel.ListViewModel
 
 class SearchFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
@@ -39,6 +33,7 @@ class SearchFragment : Fragment() {
         viewModel.refresh()
 
         val searchView = view.findViewById<android.widget.SearchView>(R.id.searchView)
+//        searchView.setQuery("",false)
         searchView.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return false

@@ -15,7 +15,7 @@
         android:theme="@style/Theme.UbayaKost160420056"
         tools:targetApi="31">
         <activity
-            android:name=".view.MainActivity"
+            android:name="id.ac.ubaya.informatika.ubayakostuas.view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

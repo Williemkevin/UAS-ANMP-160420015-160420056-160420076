@@ -1,4 +1,4 @@
-package id.ac.ubaya.informatika.ubayakost160420056.view
+package id.ac.ubaya.informatika.ubayakostuas.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,9 +13,9 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputEditText
-import id.ac.ubaya.informatika.ubayakost160420056.R
-import id.ac.ubaya.informatika.ubayakost160420056.model.Global
-import id.ac.ubaya.informatika.ubayakost160420056.util.loadImage
+import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.model.Global
+import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 
 class ProfileFragment : Fragment() {
     override fun onCreateView(
