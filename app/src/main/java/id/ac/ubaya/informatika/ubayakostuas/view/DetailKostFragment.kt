@@ -31,37 +31,37 @@ class DetailKostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<Button>(R.id.btnContactUs).setOnClickListener {
-            val action = DetailKostFragmentDirections.actionContactFragment(detailModel.kostLD.value?.email.toString(), detailModel.kostLD.value?.phone.toString())
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        view.findViewById<TextView>(R.id.txtSimulasi).setOnClickListener {
-            val action = DetailKostFragmentDirections.actionSimulasiFragment(detailModel.kostLD.value?.harga_per_bulan.toString(), detailModel.kostLD.value?.harga_per_minggu.toString())
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        val kostId = DetailKostFragmentArgs.fromBundle(requireArguments()).kostId
-
-        detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        detailModel.fetch(kostId)
-
-        observeViewModel()
+//        view.findViewById<Button>(R.id.btnContactUs).setOnClickListener {
+//            val action = DetailKostFragmentDirections.actionContactFragment(detailModel.kostLD.value?.email.toString(), detailModel.kostLD.value?.phone.toString())
+//            Navigation.findNavController(it).navigate(action)
+//        }
+//
+//        view.findViewById<TextView>(R.id.txtSimulasi).setOnClickListener {
+//            val action = DetailKostFragmentDirections.actionSimulasiFragment(detailModel.kostLD.value?.harga_per_bulan.toString(), detailModel.kostLD.value?.harga_per_minggu.toString())
+//            Navigation.findNavController(it).navigate(action)
+//        }
+//
+//        val kostId = DetailKostFragmentArgs.fromBundle(requireArguments()).kostId
+//
+//        detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+//        detailModel.fetch(kostId)
+//
+//        observeViewModel()
 
     }
 
     fun observeViewModel(){
-        detailModel.kostLD.observe(viewLifecycleOwner, Observer {
-            val pb = view?.findViewById<ProgressBar>(R.id.progressBarDetail)
-            view?.findViewById<ImageView>(R.id.imgDetail)?.loadImage(detailModel.kostLD.value?.picture,pb!!)
-            view?.findViewById<TextView>(R.id.txtNamaDetail)?.text = detailModel.kostLD.value?.nama
-            view?.findViewById<TextView>(R.id.txtAlamatDetail)?.text = detailModel.kostLD.value?.alamat
-            view?.findViewById<TextView>(R.id.txtKostType)?.text = detailModel.kostLD.value?.typeKost
-            view?.findViewById<TextView>(R.id.txtPet)?.text = detailModel.kostLD.value?.bawaHewan
-            view?.findViewById<TextView>(R.id.txtFacility)?.text = detailModel.kostLD.value?.fasilitas
-            var harga = NumberFormat.getNumberInstance(Locale.US).format(detailModel.kostLD.value?.harga_per_bulan)
-            view?.findViewById<TextView>(R.id.txtHargaKostDetail)?.text = "Rp. $harga / bulan"
-            view?.findViewById<TextView>(R.id.txtDescription)?.text = detailModel.kostLD.value?.deskripsi
-        })
+//        detailModel.kostLD.observe(viewLifecycleOwner, Observer {
+//            val pb = view?.findViewById<ProgressBar>(R.id.progressBarDetail)
+//            view?.findViewById<ImageView>(R.id.imgDetail)?.loadImage(detailModel.kostLD.value?.picture,pb!!)
+//            view?.findViewById<TextView>(R.id.txtNamaDetail)?.text = detailModel.kostLD.value?.nama
+//            view?.findViewById<TextView>(R.id.txtAlamatDetail)?.text = detailModel.kostLD.value?.alamat
+//            view?.findViewById<TextView>(R.id.txtKostType)?.text = detailModel.kostLD.value?.typeKost
+//            view?.findViewById<TextView>(R.id.txtPet)?.text = detailModel.kostLD.value?.bawaHewan
+//            view?.findViewById<TextView>(R.id.txtFacility)?.text = detailModel.kostLD.value?.fasilitas
+//            var harga = NumberFormat.getNumberInstance(Locale.US).format(detailModel.kostLD.value?.harga_per_bulan)
+//            view?.findViewById<TextView>(R.id.txtHargaKostDetail)?.text = "Rp. $harga / bulan"
+//            view?.findViewById<TextView>(R.id.txtDescription)?.text = detailModel.kostLD.value?.deskripsi
+//        })
     }
 }

@@ -30,6 +30,7 @@ class KostListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refresh()
 
@@ -51,22 +52,15 @@ class KostListFragment : Fragment() {
     fun observeViewModel(){
         viewModel.kostsLD.observe(viewLifecycleOwner, Observer {
             kostListAdapter.updateKostList(it)
-        })
-        viewModel.kostLoadErrorLD.observe(viewLifecycleOwner, Observer {
             val txtError = view?.findViewById<TextView>(R.id.txtErrorKost)
-            if(it == true) {
-                txtError?.visibility = View.VISIBLE
-            } else {
-                txtError?.visibility = View.GONE
-            }
-        })
-        viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             val recView = view?.findViewById<RecyclerView>(R.id.recViewListKost)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressLoadKost)
-            if(it == true) {
+            if(it.isEmpty()) {
+                txtError?.visibility = View.VISIBLE
                 recView?.visibility = View.GONE
                 progressLoad?.visibility = View.VISIBLE
             } else {
+                txtError?.visibility = View.GONE
                 recView?.visibility = View.VISIBLE
                 progressLoad?.visibility = View.GONE
             }

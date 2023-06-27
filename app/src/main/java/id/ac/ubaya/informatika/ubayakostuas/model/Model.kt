@@ -1,27 +1,38 @@
 package id.ac.ubaya.informatika.ubayakostuas.model
 
-import com.google.gson.annotations.SerializedName
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
+@Entity("kosts")
 data class Kost(
-    val id:String?,
+    @ColumnInfo(name = "name")
     val nama:String?,
+    @ColumnInfo(name = "alamat")
     val alamat:String?,
-    @SerializedName("harga/bulan")
+    @ColumnInfo(name = "harga_bulan")
     val harga_per_bulan:Int?,
-    @SerializedName("harga/minggu")
+    @ColumnInfo(name = "harga_minggu")
     val harga_per_minggu:Int?,
+    @ColumnInfo(name = "picture")
     val picture:String?,
+    @ColumnInfo(name = "fasilitas")
     val fasilitas:String?,
-    @SerializedName("type_kost")
+    @ColumnInfo(name = "type_kost")
     val typeKost:String?,
-    @SerializedName("bawa_hewan")
+    @ColumnInfo(name = "bawa_hewan")
     val bawaHewan:String?,
+    @ColumnInfo(name = "deskripsi")
     val deskripsi:String?,
+    @ColumnInfo(name = "email")
     val email:String?,
-    @SerializedName("phone_number")
+    @ColumnInfo(name = "phone")
     val phone:String?,
-    @SerializedName("jumlah_kamar")
+    @ColumnInfo(name = "jumlah_kamar")
     val jumlahKamar:Int?,
-    @SerializedName("kamar_terisi")
+    @ColumnInfo(name = "kamar_terisi")
     val kamarTerisi:Int?
-)
+){
+    @PrimaryKey(autoGenerate = true)
+    var idKost:Int = 0
+}

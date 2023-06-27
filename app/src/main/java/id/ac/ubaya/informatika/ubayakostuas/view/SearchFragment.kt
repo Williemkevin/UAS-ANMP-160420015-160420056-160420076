@@ -53,7 +53,7 @@ class SearchFragment : Fragment() {
 
     fun observeViewModel(){
         viewModel.kostsLD.observe(viewLifecycleOwner, Observer {
-            searchListAdapter.updateKostList(it)
+//            searchListAdapter.updateKostList(it)
         })
     }
 

@@ -39,10 +39,10 @@ class SearchAdapter(var kostList:ArrayList<Kost>):RecyclerView.Adapter<SearchAda
         var harga = NumberFormat.getNumberInstance(Locale.US).format(kostList[position].harga_per_bulan)
         holder.view.findViewById<TextView>(R.id.txtHargaSearch).text = "Rp. $harga"
 
-        imageView.setOnClickListener{
-            val action = SearchFragmentDirections.actionDetailFromSearch(kostList[position].id.toString())
-            Navigation.findNavController(it).navigate(action)
-        }
+//        imageView.setOnClickListener{
+//            val action = SearchFragmentDirections.actionDetailFromSearch(kostList[position].id.toString())
+//            Navigation.findNavController(it).navigate(action)
+//        }
 
     }
 

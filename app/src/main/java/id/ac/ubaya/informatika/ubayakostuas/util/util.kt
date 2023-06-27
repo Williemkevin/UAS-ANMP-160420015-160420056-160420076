@@ -1,11 +1,14 @@
 package id.ac.ubaya.informatika.ubayakostuas.util
 
+import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import androidx.room.Room
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
 import java.lang.Exception
 
 fun ImageView.loadImage(url: String?, progressBar:ProgressBar){
@@ -23,4 +26,11 @@ fun ImageView.loadImage(url: String?, progressBar:ProgressBar){
             }
 
         })
+}
+
+val DB_NAME = "newkostdb"
+fun buildDb(context: Context):KostDatabase {
+    val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_NAME)
+        .build()
+    return db
 }

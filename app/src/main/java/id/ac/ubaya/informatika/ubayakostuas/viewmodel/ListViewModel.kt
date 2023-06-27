@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.StringRequest
@@ -11,40 +12,35 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
+import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
+import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class ListViewModel(application: Application) :AndroidViewModel(application) {
-    val kostsLD = MutableLiveData<ArrayList<Kost>>()
+class ListViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
+    val kostsLD = MutableLiveData<List<Kost>>()
     val kostLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
+    private var job = Job()
 
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
 
     fun refresh(){
         loadingLD.value = true
         kostLoadErrorLD.value = false
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/getKost.php"
-        val stringRequest = StringRequest(Request.Method.GET, url, {
-                val sType = object : TypeToken<List<Kost>>() { }.type
-                val result = Gson().fromJson<List<Kost>>(it, sType)
-                kostsLD.value = result as ArrayList<Kost>?
-                loadingLD.value = false
-
-                Log.d("showvoley", result.toString())
-            },
-            {
-                Log.d("showvoley", it.toString())
-                kostLoadErrorLD.value = false
-                loadingLD.value = false
-            })
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
+        launch {
+            val db = buildDb(getApplication())
+            kostsLD.postValue(db.kostDao().selectAllKost())
+        }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
-    }
+//    override fun onCleared() {
+//        super.onCleared()
+//        queue?.cancelAll(TAG)
+//    }
 }

@@ -36,7 +36,7 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         holder.view.findViewById<TextView>(R.id.txtHargaKost).text = "Rp. $harga"
 
         holder.view.findViewById<Button>(R.id.btnDetailKost).setOnClickListener {
-            val action = KostListFragmentDirections.actionDetailFragment(kostList[position].id.toString())
+            val action = KostListFragmentDirections.actionDetailFragment(kostList[position].idKost.toString())
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -45,7 +45,7 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         imageView.loadImage(kostList[position].picture, progressBar)
     }
 
-    fun updateKostList(newKostList: ArrayList<Kost>){
+    fun updateKostList(newKostList: List<Kost>){
         kostList.clear()
         kostList.addAll(newKostList)
         notifyDataSetChanged()
