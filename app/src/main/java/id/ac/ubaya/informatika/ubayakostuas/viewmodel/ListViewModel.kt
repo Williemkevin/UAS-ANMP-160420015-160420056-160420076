@@ -38,9 +38,4 @@ class ListViewModel(application: Application):AndroidViewModel(application), Cor
             kostsLD.postValue(db.kostDao().selectAllKost())
         }
     }
-
-//    override fun onCleared() {
-//        super.onCleared()
-//        queue?.cancelAll(TAG)
-//    }
 }

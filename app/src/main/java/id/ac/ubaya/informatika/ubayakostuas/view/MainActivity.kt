@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
 //            Kost("The Sunny Side","Jl. Tenggilis Raya 131",1450000,1000000,"https://apollo-singapore.akamaized.net/v1/files/5ehffab7nx4o3-ID/image;s=850x0","Kasur, wifi, meja, lemari, AC, kamar mandi dalam, TV","Wanita","Boleh","Kost luas dengan fasilitas super lengkap","sunnyside@gmail.com","087461564497",7,5),
 //            Kost("The Blue Lagoon","Jl. Mejoyo 94",600000,450000,"https://idkos.com/images/gallery_property/standar-17.jpeg","Kasur, kamar mandi dalam","Pria","Tidak","Kost murah dan kawasan yang strategis","bluelaogon@gmail.com","08124658794",16,10)
 //        )
-//        viewModel.update(4)
+//        viewModel.addKost(kostList)
     }
 
     override fun onSupportNavigateUp(): Boolean {

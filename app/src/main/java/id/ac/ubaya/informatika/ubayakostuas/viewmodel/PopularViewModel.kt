@@ -11,47 +11,30 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
+import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class PopularViewModel(application: Application) : AndroidViewModel(application) {
-    val kostsLD = MutableLiveData<ArrayList<Kost>>()
+class PopularViewModel(application: Application) : AndroidViewModel(application), CoroutineScope {
+    val kostsLD = MutableLiveData<List<Kost>>()
     val kostLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
 
-    val TAG = "volleyTag"
-    private var queue: RequestQueue? = null
+    private var job = Job()
+
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
 
     fun refresh(){
-        kostLoadErrorLD.value = false
         loadingLD.value = true
+        kostLoadErrorLD.value = false
 
-        queue = Volley.newRequestQueue(getApplication())
-        val url = "http://10.0.2.2/anmp/getKost.php"
-        val stringRequest = StringRequest(
-            Request.Method.GET, url, {
-                val sType = object : TypeToken<ArrayList<Kost>>() { }.type
-                val result = Gson().fromJson<ArrayList<Kost>>(it, sType)
-                val listKost = ArrayList<Kost>()
-                for (item in 0 until result.count()){
-                    if ((result.get(item).kamarTerisi!! * 100 / result.get(item).jumlahKamar!!) >= 70){
-                        listKost += result.get(item)
-                    }
-                }
-                loadingLD.value = false
-                kostsLD.value = listKost
-
-                Log.d("showvoley", listKost.toString())
-            },
-            {
-                Log.d("showvoley", it.toString())
-                kostLoadErrorLD.value = false
-                loadingLD.value = false
-            })
-        stringRequest.tag = TAG
-        queue?.add(stringRequest)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        queue?.cancelAll(TAG)
+        launch {
+            val db = buildDb(getApplication())
+            kostsLD.postValue(db.kostDao().selectPopularKost())
+        }
     }
 }

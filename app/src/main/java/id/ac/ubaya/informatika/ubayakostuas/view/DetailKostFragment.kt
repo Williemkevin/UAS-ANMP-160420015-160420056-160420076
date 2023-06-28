@@ -16,7 +16,7 @@ import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
 class DetailKostFragment : Fragment() {
     private lateinit var detailModel: DetailViewModel
@@ -41,27 +41,27 @@ class DetailKostFragment : Fragment() {
 //            Navigation.findNavController(it).navigate(action)
 //        }
 //
-//        val kostId = DetailKostFragmentArgs.fromBundle(requireArguments()).kostId
+        val kostId = DetailKostFragmentArgs.fromBundle(requireArguments()).kostId
 //
-//        detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-//        detailModel.fetch(kostId)
-//
-//        observeViewModel()
+        detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+        detailModel.fetch(kostId)
+
+        observeViewModel()
 
     }
 
     fun observeViewModel(){
-//        detailModel.kostLD.observe(viewLifecycleOwner, Observer {
-//            val pb = view?.findViewById<ProgressBar>(R.id.progressBarDetail)
-//            view?.findViewById<ImageView>(R.id.imgDetail)?.loadImage(detailModel.kostLD.value?.picture,pb!!)
-//            view?.findViewById<TextView>(R.id.txtNamaDetail)?.text = detailModel.kostLD.value?.nama
-//            view?.findViewById<TextView>(R.id.txtAlamatDetail)?.text = detailModel.kostLD.value?.alamat
-//            view?.findViewById<TextView>(R.id.txtKostType)?.text = detailModel.kostLD.value?.typeKost
-//            view?.findViewById<TextView>(R.id.txtPet)?.text = detailModel.kostLD.value?.bawaHewan
-//            view?.findViewById<TextView>(R.id.txtFacility)?.text = detailModel.kostLD.value?.fasilitas
-//            var harga = NumberFormat.getNumberInstance(Locale.US).format(detailModel.kostLD.value?.harga_per_bulan)
-//            view?.findViewById<TextView>(R.id.txtHargaKostDetail)?.text = "Rp. $harga / bulan"
-//            view?.findViewById<TextView>(R.id.txtDescription)?.text = detailModel.kostLD.value?.deskripsi
-//        })
+        detailModel.kostLD.observe(viewLifecycleOwner, Observer {
+            val pb = view?.findViewById<ProgressBar>(R.id.progressBarDetail)
+            view?.findViewById<ImageView>(R.id.imgDetail)?.loadImage(it.picture,pb!!)
+            view?.findViewById<TextView>(R.id.txtNamaDetail)?.text = it.nama
+            view?.findViewById<TextView>(R.id.txtAlamatDetail)?.text = it.alamat
+            view?.findViewById<TextView>(R.id.txtKostType)?.text = it.typeKost
+            view?.findViewById<TextView>(R.id.txtPet)?.text = it.bawaHewan
+            view?.findViewById<TextView>(R.id.txtFacility)?.text = it.fasilitas
+            var harga = NumberFormat.getNumberInstance(Locale.US).format(it.harga_per_bulan)
+            view?.findViewById<TextView>(R.id.txtHargaKostDetail)?.text = "Rp. $harga / bulan"
+            view?.findViewById<TextView>(R.id.txtDescription)?.text = it.deskripsi
+        })
     }
 }

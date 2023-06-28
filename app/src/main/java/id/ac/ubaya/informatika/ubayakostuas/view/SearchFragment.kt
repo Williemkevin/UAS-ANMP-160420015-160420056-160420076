@@ -16,7 +16,6 @@ import id.ac.ubaya.informatika.ubayakostuas.viewmodel.ListViewModel
 class SearchFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
     private val searchListAdapter = SearchAdapter(arrayListOf())
-//    private var kostList = ArrayList<Kost>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +52,7 @@ class SearchFragment : Fragment() {
 
     fun observeViewModel(){
         viewModel.kostsLD.observe(viewLifecycleOwner, Observer {
-//            searchListAdapter.updateKostList(it)
+            searchListAdapter.updateKostList(it)
         })
     }
 

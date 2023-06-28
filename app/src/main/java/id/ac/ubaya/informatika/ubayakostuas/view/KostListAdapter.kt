@@ -36,7 +36,7 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
         holder.view.findViewById<TextView>(R.id.txtHargaKost).text = "Rp. $harga"
 
         holder.view.findViewById<Button>(R.id.btnDetailKost).setOnClickListener {
-            val action = KostListFragmentDirections.actionDetailFragment(kostList[position].idKost.toString())
+            val action = KostListFragmentDirections.actionDetailFragment(kostList[position].idKost)
             Navigation.findNavController(it).navigate(action)
         }
 

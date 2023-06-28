@@ -24,7 +24,7 @@
             app:destination="@id/contactFragment" />
         <argument
             android:name="kost_id"
-            app:argType="string" />
+            app:argType="integer" />
         <action
             android:id="@+id/actionSimulasiFragment"
             app:destination="@id/simulasiPembayaranFragment" />

@@ -11,11 +11,11 @@ interface KostDao {
     @Query("SELECT * FROM kosts")
     fun selectAllKost(): List<Kost>
 
+    @Query("SELECT * FROM kosts WHERE ((kamar_terisi * 100)/jumlah_kamar)>=70")
+    fun selectPopularKost(): List<Kost>
+
     @Query("SELECT * FROM kosts WHERE idKost= :id")
     fun selectKost(id:Int): Kost
-
-//    @Query("UPDATE kosts SET picture='https://www.desain.id/blog/storage/uploads/contents/371/ide-desain-rumah-kos-kosan-2-lantai.png' WHERE idKost = :id")
-//    fun update(id:Int)
 
     @Delete
     fun deleteKost(kost: Kost)

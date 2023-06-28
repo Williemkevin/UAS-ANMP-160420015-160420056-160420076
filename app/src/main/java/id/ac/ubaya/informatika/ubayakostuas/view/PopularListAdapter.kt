@@ -36,17 +36,17 @@ class PopularListAdapter(val popularList:ArrayList<Kost>) : RecyclerView.Adapter
         var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarPopular)
         imageView.loadImage(popularList[position].picture, progressBar)
 
-//        imageView.setOnClickListener{
-//            val action = PopularKostFragmentDirections.actionDetailFromPopular(popularList[position].id.toString())
-//            Navigation.findNavController(it).navigate(action)
-//        }
+        imageView.setOnClickListener{
+            val action = PopularKostFragmentDirections.actionDetailFromPopular(popularList[position].idKost)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
        return popularList.size
     }
 
-    fun updateKostList(newPopularList: ArrayList<Kost>){
+    fun updateKostList(newPopularList: List<Kost>){
         popularList.clear()
         popularList.addAll(newPopularList)
         notifyDataSetChanged()

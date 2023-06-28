@@ -51,26 +51,18 @@ class PopularKostFragment : Fragment() {
     fun observeViewModel(){
         viewModel.kostsLD.observe(viewLifecycleOwner, Observer {
             popularListAdapter.updateKostList(it)
-        })
-        viewModel.kostLoadErrorLD.observe(viewLifecycleOwner, Observer {
             val txtError = view?.findViewById<TextView>(R.id.txtErrorPopular)
-            if(it == true) {
-                txtError?.visibility = View.VISIBLE
-            } else {
-                txtError?.visibility = View.GONE
-            }
-        })
-        viewModel.loadingLD.observe(viewLifecycleOwner, Observer {
             val recView = view?.findViewById<RecyclerView>(R.id.recViewPopular)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressLoadPopular)
-            if(it == true) {
+            if(it.isEmpty()) {
+                txtError?.visibility = View.VISIBLE
                 recView?.visibility = View.GONE
                 progressLoad?.visibility = View.VISIBLE
             } else {
+                txtError?.visibility = View.GONE
                 recView?.visibility = View.VISIBLE
                 progressLoad?.visibility = View.GONE
             }
         })
-
     }
 }

@@ -65,6 +65,5 @@ class KostListFragment : Fragment() {
                 progressLoad?.visibility = View.GONE
             }
         })
-
     }
 }
