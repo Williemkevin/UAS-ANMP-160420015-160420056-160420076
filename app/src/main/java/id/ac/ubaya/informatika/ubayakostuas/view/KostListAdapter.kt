@@ -10,17 +10,18 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.databinding.KostListItemBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import java.text.NumberFormat
 import java.util.Locale
 
-class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostListAdapter.KostViewHolder>() {
-    class KostViewHolder(var view: View) :RecyclerView.ViewHolder(view)
+class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostListAdapter.KostViewHolder>(), KostListInterface {
+    class KostViewHolder(var view: KostListItemBinding) :RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.kost_list_item, parent, false)
+        val view = KostListItemBinding.inflate(inflater, parent, false)
 
         return KostViewHolder(view)
     }
@@ -30,24 +31,19 @@ class KostListAdapter(val kostList:ArrayList<Kost>) : RecyclerView.Adapter<KostL
     }
 
     override fun onBindViewHolder(holder: KostViewHolder, position: Int) {
-        holder.view.findViewById<TextView>(R.id.txtNamaKost).text = kostList[position].nama
-        holder.view.findViewById<TextView>(R.id.txtAlamatKost).text = kostList[position].alamat
-        var harga = NumberFormat.getNumberInstance(Locale.US).format(kostList[position].harga_per_bulan)
-        holder.view.findViewById<TextView>(R.id.txtHargaKost).text = "Rp. $harga"
-
-        holder.view.findViewById<Button>(R.id.btnDetailKost).setOnClickListener {
-            val action = KostListFragmentDirections.actionDetailFragment(kostList[position].idKost)
-            Navigation.findNavController(it).navigate(action)
-        }
-
-        var imageView = holder.view.findViewById<ImageView>(R.id.imageViewKost)
-        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBar)
-        imageView.loadImage(kostList[position].picture, progressBar)
+        holder.view.kost = kostList[position]
+        holder.view.detailListener = this
     }
 
     fun updateKostList(newKostList: List<Kost>){
         kostList.clear()
         kostList.addAll(newKostList)
         notifyDataSetChanged()
+    }
+
+    override fun onDetailClick(v: View) {
+        val idKost = v.tag.toString().toInt()
+        val action = KostListFragmentDirections.actionDetailFragment(idKost)
+        Navigation.findNavController(v).navigate(action)
     }
 }

@@ -17,6 +17,9 @@ class DetailViewModel(application: Application) :AndroidViewModel(application), 
     val kostLD = MutableLiveData<Kost>()
     private val job = Job()
 
+    override val coroutineContext: CoroutineContext
+        get() = job + Dispatchers.IO
+
     fun fetch(idKost: Int) {
         launch {
             val db = buildDb(getApplication())
@@ -30,7 +33,4 @@ class DetailViewModel(application: Application) :AndroidViewModel(application), 
 //            db.kostDao().update(id)
 //        }
 //    }
-
-    override val coroutineContext: CoroutineContext
-        get() = job + Dispatchers.IO
 }
