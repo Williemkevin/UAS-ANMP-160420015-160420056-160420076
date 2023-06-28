@@ -37,6 +37,6 @@ fun buildDb(context: Context):KostDatabase {
 }
 
 @BindingAdapter("android:imageUrl", "android:progressBar")
-fun loadPhotoURL(view:ImageView, url: String, pb:ProgressBar){
+fun loadPhotoURL(view:ImageView, url: String?, pb:ProgressBar){
     view.loadImage(url, pb)
 }
