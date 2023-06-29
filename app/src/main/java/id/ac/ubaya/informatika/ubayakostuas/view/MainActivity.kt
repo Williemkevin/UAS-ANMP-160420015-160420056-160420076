@@ -13,13 +13,14 @@ import com.google.android.material.navigation.NavigationView
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
+import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
-    private lateinit var viewModel:DetailViewModel
-
+//    private lateinit var viewModel:DetailViewModel
+//    private lateinit var viewModelUser:UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -50,6 +51,12 @@ class MainActivity : AppCompatActivity() {
 //            Kost("The Blue Lagoon","Jl. Mejoyo 94",600000,450000,"https://idkos.com/images/gallery_property/standar-17.jpeg","Kasur, kamar mandi dalam","Pria","Tidak","Kost murah dan kawasan yang strategis","bluelaogon@gmail.com","08124658794",16,10)
 //        )
 //        viewModel.addKost(kostList)
+
+//        viewModelUser = ViewModelProvider(this).get(UserViewModel::class.java)
+//        val user = listOf(
+//            User("Kevin", "kevin@gmail.com", "08487854688", 1)
+//        )
+//        viewModelUser.addUser(user)
     }
 
     override fun onSupportNavigateUp(): Boolean {

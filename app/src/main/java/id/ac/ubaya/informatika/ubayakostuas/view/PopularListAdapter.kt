@@ -9,37 +9,27 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.databinding.KostListItemBinding
+import id.ac.ubaya.informatika.ubayakostuas.databinding.PopularListItemBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class PopularListAdapter(val popularList:ArrayList<Kost>) : RecyclerView.Adapter<PopularListAdapter.PopularViewHolder>() {
-    class PopularViewHolder(var view: View) :RecyclerView.ViewHolder(view)
+class PopularListAdapter(val popularList:ArrayList<Kost>) : RecyclerView.Adapter<PopularListAdapter.PopularViewHolder>(), KostListInterface{
+    class PopularViewHolder(var view: PopularListItemBinding) :RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PopularListAdapter.PopularViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.popular_list_item, parent, false)
+        val view = PopularListItemBinding.inflate(inflater, parent, false)
 
         return PopularViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
-        holder.view.findViewById<TextView>(R.id.txtNamaPopuler).text = popularList[position].nama
-        var harga = NumberFormat.getNumberInstance(Locale.US).format(popularList[position].harga_per_bulan)
-        holder.view.findViewById<TextView>(R.id.txtHargaPopuler).text = "Rp. $harga"
-        val sisaKamar = popularList[position].jumlahKamar!! - popularList[position].kamarTerisi!!
-        holder.view.findViewById<TextView>(R.id.txtSisaKamar).text = "TERSISA $sisaKamar KAMAR !!"
-
-        var imageView = holder.view.findViewById<ImageView>(R.id.imgViewPopular)
-        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarPopular)
-        imageView.loadImage(popularList[position].picture, progressBar)
-
-        imageView.setOnClickListener{
-            val action = PopularKostFragmentDirections.actionDetailFromPopular(popularList[position].idKost)
-            Navigation.findNavController(it).navigate(action)
-        }
+        holder.view.kost = popularList[position]
+        holder.view.detailListener = this
     }
 
     override fun getItemCount(): Int {
@@ -50,5 +40,11 @@ class PopularListAdapter(val popularList:ArrayList<Kost>) : RecyclerView.Adapter
         popularList.clear()
         popularList.addAll(newPopularList)
         notifyDataSetChanged()
+    }
+
+    override fun onDetailClick(v: View) {
+        val idKost = v.tag.toString().toInt()
+        val action = PopularKostFragmentDirections.actionDetailFromPopular(idKost)
+        Navigation.findNavController(v).navigate(action)
     }
 }

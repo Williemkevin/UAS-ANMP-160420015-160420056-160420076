@@ -17,6 +17,10 @@ interface KostDao {
     @Query("SELECT * FROM kosts WHERE idKost= :id")
     fun selectKost(id:Int): Kost
 
+    @Query("UPDATE kosts SET harga_bulan=:hargaBulan, harga_minggu=:hargaMinggu WHERE idKost = :id")
+    fun updatePrice(hargaBulan:Int, hargaMinggu:Int, id:Int)
+
     @Delete
     fun deleteKost(kost: Kost)
+
 }

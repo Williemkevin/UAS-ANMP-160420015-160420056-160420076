@@ -9,18 +9,20 @@ import android.widget.TextView
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.databinding.PopularListItemBinding
+import id.ac.ubaya.informatika.ubayakostuas.databinding.SearchListItemBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class SearchAdapter(var kostList:ArrayList<Kost>):RecyclerView.Adapter<SearchAdapter.KostViewHolder>() {
-    class KostViewHolder(var view: View): RecyclerView.ViewHolder(view)
+class SearchAdapter(var kostList:ArrayList<Kost>):RecyclerView.Adapter<SearchAdapter.KostViewHolder>(), KostListInterface {
+    class KostViewHolder(var view: SearchListItemBinding): RecyclerView.ViewHolder(view.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KostViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.search_list_item, parent, false)
+        val view = SearchListItemBinding.inflate(inflater, parent, false)
 
         return KostViewHolder(view)
     }
@@ -30,20 +32,8 @@ class SearchAdapter(var kostList:ArrayList<Kost>):RecyclerView.Adapter<SearchAda
     }
 
     override fun onBindViewHolder(holder: KostViewHolder, position: Int) {
-        var imageView = holder.view.findViewById<ImageView>(R.id.imageViewSearch)
-        var progressBar = holder.view.findViewById<ProgressBar>(R.id.progressBarSearch)
-        imageView.loadImage(kostList[position].picture, progressBar)
-
-        holder.view.findViewById<TextView>(R.id.txtNamaSearch).text = kostList[position].nama
-        holder.view.findViewById<TextView>(R.id.txtTypeSearch).text = "Kost " + kostList[position].typeKost
-        var harga = NumberFormat.getNumberInstance(Locale.US).format(kostList[position].harga_per_bulan)
-        holder.view.findViewById<TextView>(R.id.txtHargaSearch).text = "Rp. $harga"
-
-        imageView.setOnClickListener{
-            val action = SearchFragmentDirections.actionDetailFromSearch(kostList[position].idKost)
-            Navigation.findNavController(it).navigate(action)
-        }
-
+        holder.view.kost = kostList[position]
+        holder.view.detailListener = this
     }
 
     fun updateKostList(newKostList: List<Kost>){
@@ -55,5 +45,11 @@ class SearchAdapter(var kostList:ArrayList<Kost>):RecyclerView.Adapter<SearchAda
     fun setFilteredList(kostFilter: ArrayList<Kost>){
         this.kostList = kostFilter
         notifyDataSetChanged()
+    }
+
+    override fun onDetailClick(v: View) {
+        val idKost = v.tag.toString().toInt()
+        val action = SearchFragmentDirections.actionDetailFromSearch(idKost)
+        Navigation.findNavController(v).navigate(action)
     }
 }

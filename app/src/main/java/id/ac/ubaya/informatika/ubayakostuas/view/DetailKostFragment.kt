@@ -29,32 +29,21 @@ class DetailKostFragment : Fragment(), DetailInterface {
     ): View? {
         // Inflate the layout for this fragment
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_kost, container, false)
+        dataBinding.contactUsListener = this
+        dataBinding.simulasiListener = this
+
         return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        view.findViewById<Button>(R.id.btnContactUs).setOnClickListener {
-//            val action = DetailKostFragmentDirections.actionContactFragment(detailModel.kostLD.value?.email.toString(), detailModel.kostLD.value?.phone.toString())
-//            Navigation.findNavController(it).navigate(action)
-//        }
-//
-//        view.findViewById<TextView>(R.id.txtSimulasi).setOnClickListener {
-//            val action = DetailKostFragmentDirections.actionSimulasiFragment(detailModel.kostLD.value?.harga_per_bulan.toString(), detailModel.kostLD.value?.harga_per_minggu.toString())
-//            Navigation.findNavController(it).navigate(action)
-//        }
-//
-        val kostId = DetailKostFragmentArgs.fromBundle(requireArguments()).kostId
+        val idKost = DetailKostFragmentArgs.fromBundle(requireArguments()).kostId
 
         detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-        detailModel.fetch(kostId)
+        detailModel.fetch(idKost)
 
         observeViewModel()
-
-//        dataBinding.btnContactUs.setOnClickListener {
-//            onContactUsClick(it)
-//        }
     }
 
     fun observeViewModel(){
@@ -64,10 +53,16 @@ class DetailKostFragment : Fragment(), DetailInterface {
     }
 
     override fun onContactUsClick(v: View) {
-        val email = v.tag.toString()
-        val phone = v.contentDescription.toString()
+        val idKost = v.tag.toString().toInt()
 
-        val action = DetailKostFragmentDirections.actionContactFragment(email,phone)
+        val action = DetailKostFragmentDirections.actionContactFragment(idKost)
+        Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun onSimulasiClick(v: View) {
+        val idKost = v.tag.toString().toInt()
+
+        val action = DetailKostFragmentDirections.actionSimulasiFragment(idKost)
         Navigation.findNavController(v).navigate(action)
     }
 }

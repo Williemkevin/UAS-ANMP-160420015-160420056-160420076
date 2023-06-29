@@ -36,3 +36,18 @@ data class Kost(
     @PrimaryKey(autoGenerate = true)
     var idKost:Int = 0
 }
+
+@Entity("users")
+data class User(
+    @ColumnInfo(name = "name")
+    val nama:String?,
+    @ColumnInfo(name = "email")
+    val email:String?,
+    @ColumnInfo(name = "phone")
+    val telepon:String?,
+    @ColumnInfo(name = "gender")
+    val gender:Int?,
+){
+    @PrimaryKey(autoGenerate = true)
+    var idUser:Int = 0
+}

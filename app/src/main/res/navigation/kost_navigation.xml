@@ -62,11 +62,8 @@
         android:label="Contact Person"
         tools:layout="@layout/fragment_contact">
         <argument
-            android:name="email"
-            app:argType="string" />
-        <argument
-            android:name="phoneNum"
-            app:argType="string" />
+            android:name="idKost"
+            app:argType="integer" />
     </dialog>
     <fragment
         android:id="@+id/aboutFragment"
@@ -79,10 +76,7 @@
         android:label="Simulasi Pembayaran"
         tools:layout="@layout/fragment_simulasi_pembayaran" >
         <argument
-            android:name="harga_per_bulan"
-            app:argType="string" />
-        <argument
-            android:name="harga_per_minggu"
-            app:argType="string" />
+            android:name="idKost"
+            app:argType="integer" />
     </fragment>
 </navigation>

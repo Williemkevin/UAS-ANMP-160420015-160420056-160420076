@@ -10,6 +10,9 @@
         <variable
             name="contactUsListener"
             type="id.ac.ubaya.informatika.ubayakostuas.view.DetailInterface" />
+        <variable
+            name="simulasiListener"
+            type="id.ac.ubaya.informatika.ubayakostuas.view.DetailInterface" />
     </data>
 
     <FrameLayout
@@ -238,7 +241,7 @@
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
                 android:text="Contact Us"
-                android:tag="@{kost.email}"
+                android:tag="@{kost.idKost}"
                 android:contentDescription="@{kost.phone}"
                 android:onClick="@{contactUsListener::onContactUsClick}"
                 app:icon="@drawable/baseline_chat_24"
@@ -265,6 +268,9 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#63DD68"
                 android:textStyle="bold"
+                android:tag="@{kost.harga_per_bulan}"
+                android:contentDescription="@{kost.harga_per_minggu.toString()}"
+                android:onClick="@{contactUsListener::onSimulasiClick}"
                 app:layout_constraintBottom_toTopOf="@+id/btnContactUs"
                 app:layout_constraintEnd_toEndOf="parent" />
 

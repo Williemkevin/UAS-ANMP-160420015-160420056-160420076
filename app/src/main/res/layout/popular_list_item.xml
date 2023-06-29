@@ -1,84 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="350dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <data>
+        <variable
+            name="kost"
+            type="id.ac.ubaya.informatika.ubayakostuas.model.Kost" />
+        <variable
+            name="detailListener"
+            type="id.ac.ubaya.informatika.ubayakostuas.view.KostListInterface" />
+    </data>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgViewPopular"
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="350dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/txtNamaPopuler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="8dp"
-                android:inputType="textMultiLine"
-                android:text="Nama"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                app:layout_constraintStart_toEndOf="@+id/imgViewPopular"
-                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/txtHargaPopuler"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:text="Harga"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:textColor="@color/design_default_color_error"
-                app:layout_constraintStart_toEndOf="@+id/imgViewPopular"
-                app:layout_constraintTop_toBottomOf="@+id/txtNamaPopuler" />
+                <ImageView
+                    android:id="@+id/imgViewPopular"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:tag="@{kost.idKost}"
+                    android:onClick="@{detailListener::onDetailClick}"
+                    android:imageUrl="@{kost.picture}"
+                    android:progressBar="@{progressBarPopular}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <ProgressBar
-                android:id="@+id/progressBarPopular"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/imgViewPopular"
-                app:layout_constraintEnd_toEndOf="@+id/imgViewPopular"
-                app:layout_constraintStart_toStartOf="@+id/imgViewPopular"
-                app:layout_constraintTop_toTopOf="@+id/imgViewPopular" />
+                <TextView
+                    android:id="@+id/txtNamaPopuler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="textMultiLine"
+                    android:text="@{kost.nama}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    app:layout_constraintStart_toEndOf="@+id/imgViewPopular"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/txtSisaKamar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="16dp"
-                android:text="Sisa Kamar"
-                android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
-                android:textStyle="bold|italic"
-                app:layout_constraintStart_toEndOf="@+id/imgViewPopular"
-                app:layout_constraintTop_toBottomOf="@+id/txtHargaPopuler" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/txtHargaPopuler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{kost.harga_per_bulan.toString()}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="@color/design_default_color_error"
+                    app:layout_constraintStart_toEndOf="@+id/imgViewPopular"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNamaPopuler" />
+
+                <ProgressBar
+                    android:id="@+id/progressBarPopular"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@+id/imgViewPopular"
+                    app:layout_constraintEnd_toEndOf="@+id/imgViewPopular"
+                    app:layout_constraintStart_toStartOf="@+id/imgViewPopular"
+                    app:layout_constraintTop_toTopOf="@+id/imgViewPopular" />
+
+                <TextView
+                    android:id="@+id/txtSisaKamar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{String.valueOf(kost.jumlahKamar - kost.kamarTerisi)}"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintStart_toEndOf="@+id/imgViewPopular"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHargaPopuler" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
