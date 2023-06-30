@@ -45,6 +45,10 @@ data class User(
     val email:String?,
     @ColumnInfo(name = "phone")
     val telepon:String?,
+    @ColumnInfo(name = "username")
+    val username:String?,
+    @ColumnInfo(name = "password")
+    val password:String?,
     @ColumnInfo(name = "gender")
     val gender:Int?,
 ){

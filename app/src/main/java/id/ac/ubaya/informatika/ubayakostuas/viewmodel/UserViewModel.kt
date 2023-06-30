@@ -14,13 +14,20 @@ import okhttp3.Dispatcher
 import kotlin.coroutines.CoroutineContext
 
 class UserViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
-    val userLD = MutableLiveData<List<User>>()
+    val userLD = MutableLiveData<User>()
     val userLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
 
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
+
+    fun getUser(email:String) {
+        launch {
+            val db = buildDb(getApplication())
+            userLD.value =  db.userDao().getUserByEmail(email)
+        }
+    }
 
 //    fun refresh(){
 //        loadingLD.value = true
