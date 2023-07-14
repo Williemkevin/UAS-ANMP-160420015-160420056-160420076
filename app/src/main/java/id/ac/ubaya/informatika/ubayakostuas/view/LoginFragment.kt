@@ -31,6 +31,12 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
+        val txtRegister = view?.findViewById<TextView>(R.id.txtToRegister)
+        txtRegister?.setOnClickListener{
+            val navController = findNavController()
+            navController.navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+
         val btnLogin = view?.findViewById<Button>(R.id.button)
         btnLogin?.setOnClickListener {
             var textInputEmail = view?.findViewById<TextInputEditText>(R.id.editTextEmailLogin)
