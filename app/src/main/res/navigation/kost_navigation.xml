@@ -13,9 +13,15 @@
         <action
             android:id="@+id/actionDetailFragment"
             app:destination="@id/detailKostFragment" />
+        <<<<<<< HEAD
+        <action
+            android:id="@+id/action_itemHome_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        =======
         <argument
             android:name="user_id"
             app:argType="integer" />
+        >>>>>>> 17eae92723723a7570d3a55c89b6ae4c86d0aa50
     </fragment>
     <fragment
         android:id="@+id/detailKostFragment"
