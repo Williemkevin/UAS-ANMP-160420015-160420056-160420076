@@ -29,13 +29,13 @@ class LoginFragment : Fragment() {
         var textInputEmail = view?.findViewById<TextInputEditText>(R.id.editTextEmailLogin)
         var textInputPassword = view?.findViewById<TextInputEditText>(R.id.editTextPasswordLogin)
 
-        userViewModel.getUser(textInputEmail.toString())
-
-        userViewModel.userLD.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(context, it.nama, Toast.LENGTH_SHORT).show()
-            if (it.password == textInputPassword.toString()){
-                Toast.makeText(context, it.password, Toast.LENGTH_SHORT).show()
-            }
-        })
+//        userViewModel.getUser(textInputEmail.toString())
+//
+//        userViewModel.userLD.observe(viewLifecycleOwner, Observer {
+//            Toast.makeText(context, it.nama, Toast.LENGTH_SHORT).show()
+//            if (it.password == textInputPassword.toString()){
+//                Toast.makeText(context, it.password, Toast.LENGTH_SHORT).show()
+//            }
+//        })
     }
 }

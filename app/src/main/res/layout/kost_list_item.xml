@@ -3,6 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="kost"
+            type="id.ac.ubaya.informatika.ubayakostuas.model.Kost" />
+        <variable
+            name="detailListener"
+            type="id.ac.ubaya.informatika.ubayakostuas.view.KostListInterface" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

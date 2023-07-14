@@ -15,6 +15,7 @@ import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
 import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
+import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
 //        viewModelUser = ViewModelProvider(this).get(UserViewModel::class.java)
 //        val user = listOf(
-//            User("Kevin", "kevin@gmail.com", "08487854688", 1)
+//            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1)
 //        )
 //        viewModelUser.addUser(user)
     }

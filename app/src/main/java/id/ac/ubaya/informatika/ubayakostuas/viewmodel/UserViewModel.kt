@@ -22,12 +22,12 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 
-    fun getUser(email:String) {
-        launch {
-            val db = buildDb(getApplication())
-            userLD.value =  db.userDao().getUserByEmail(email)
-        }
-    }
+//    fun getUser(email:String) {
+//        launch {
+//            val db = buildDb(getApplication())
+//            userLD.value =  db.userDao().getUserByEmail(email)
+//        }
+//    }
 
 //    fun refresh(){
 //        loadingLD.value = true
