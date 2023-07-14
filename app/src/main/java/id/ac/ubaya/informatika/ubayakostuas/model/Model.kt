@@ -49,6 +49,8 @@ data class User(
     val username:String?,
     @ColumnInfo(name = "password")
     val password:String?,
+    @ColumnInfo(name = "gender")
+    val gender:Int?,
 ){
     @PrimaryKey(autoGenerate = true)
     var idUser:Int = 0

@@ -12,7 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
-//import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
+import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
 import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
 

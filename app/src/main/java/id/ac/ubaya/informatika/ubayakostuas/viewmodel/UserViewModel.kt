@@ -19,12 +19,6 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
 
-    fun addUser(list: List<User>) {
-        launch {
-            val db = buildDb(getApplication())
-            db.userDao().insertUser(*list.toTypedArray())
-        }
-    }
     override val coroutineContext: CoroutineContext
         get() = job + Dispatchers.IO
 

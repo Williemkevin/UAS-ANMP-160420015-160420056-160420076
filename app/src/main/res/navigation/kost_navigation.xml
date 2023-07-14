@@ -83,14 +83,5 @@
         android:id="@+id/loginFragment"
         android:name="id.ac.ubaya.informatika.ubayakostuas.view.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/SignUpFragmentDirections"
-            app:destination="@id/signUpFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="id.ac.ubaya.informatika.ubayakostuas.view.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" />
+        tools:layout="@layout/fragment_login" />
 </navigation>
