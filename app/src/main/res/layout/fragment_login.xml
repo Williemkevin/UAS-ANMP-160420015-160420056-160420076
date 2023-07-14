@@ -57,7 +57,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextEmailLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="budi@gmail.com" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -74,7 +75,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextPasswordLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="budi123" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

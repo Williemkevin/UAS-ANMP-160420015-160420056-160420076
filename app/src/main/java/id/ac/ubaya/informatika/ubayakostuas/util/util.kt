@@ -52,7 +52,7 @@ val MIGRATION_1_2 = object : Migration(1, 2) {
 val MIGRATION_2_3 = object : Migration(2, 3) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
-            "INSERT INTO users (idUser, name, email, phone, gender) VALUES (1, 'Budi Siso', 'budi@gmail.com', '123456789', 1);"
+            ""
         )
     }
 }
