@@ -39,10 +39,10 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
 //        }
 //    }
 //
-//    fun addUser(list: List<User>){
-//        launch {
-//            val db = buildDb(getApplication())
-//            db.userDao().insertUser(*list.toTypedArray())
-//        }
-//    }
+    fun addUser(list: List<User>){
+        launch {
+            val db = buildDb(getApplication())
+            db.userDao().insertUser(*list.toTypedArray())
+        }
+    }
 }

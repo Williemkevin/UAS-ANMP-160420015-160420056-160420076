@@ -13,6 +13,7 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
+import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,4 +39,6 @@ class ListViewModel(application: Application):AndroidViewModel(application), Cor
             kostsLD.postValue(db.kostDao().selectAllKost())
         }
     }
+
+
 }

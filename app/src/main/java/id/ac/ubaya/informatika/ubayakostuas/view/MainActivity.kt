@@ -20,8 +20,8 @@ import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var drawerLayout: DrawerLayout
-//    private lateinit var viewModel:DetailViewModel
-//    private lateinit var viewModelUser:UserViewModel
+    private lateinit var viewModel:DetailViewModel
+    private lateinit var viewModelUser:UserViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 //            Kost("The Blue Lagoon","Jl. Mejoyo 94",600000,450000,"https://idkos.com/images/gallery_property/standar-17.jpeg","Kasur, kamar mandi dalam","Pria","Tidak","Kost murah dan kawasan yang strategis","bluelaogon@gmail.com","08124658794",16,10)
 //        )
 //        viewModel.addKost(kostList)
-
+//
 //        viewModelUser = ViewModelProvider(this).get(UserViewModel::class.java)
 //        val user = listOf(
 //            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1)

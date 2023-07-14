@@ -26,7 +26,12 @@ class DetailViewModel(application: Application) :AndroidViewModel(application), 
             kostLD.postValue(db.kostDao().selectKost(idKost))
         }
     }
-
+    fun addKost(list: List<Kost>){
+        launch {
+            val db = buildDb(getApplication())
+            db.kostDao().insertAll(*list.toTypedArray())
+        }
+    }
 //    fun update(id: Int) {
 //        launch {
 //            val db = buildDb(getApplication())
