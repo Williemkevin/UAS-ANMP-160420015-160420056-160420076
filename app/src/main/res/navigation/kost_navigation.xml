@@ -13,6 +13,9 @@
         <action
             android:id="@+id/actionDetailFragment"
             app:destination="@id/detailKostFragment" />
+        <argument
+            android:name="user_id"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/detailKostFragment"
@@ -83,5 +86,9 @@
         android:id="@+id/loginFragment"
         android:name="id.ac.ubaya.informatika.ubayakostuas.view.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/actionHome"
+            app:destination="@id/itemHome" />
+    </fragment>
 </navigation>
