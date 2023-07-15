@@ -3,6 +3,7 @@ package id.ac.ubaya.informatika.ubayakostuas.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity("kosts")
 data class Kost(
@@ -54,4 +55,17 @@ data class User(
 ){
     @PrimaryKey(autoGenerate = true)
     var idUser:Int = 0
+}
+
+@Entity(tableName = "user_book_kost", primaryKeys = ["userId", "kostId"])
+data class UserBookKost(
+    @ColumnInfo(name = "tanggalMasuk")
+    val tanggalMasuk: Date,
+
+    @ColumnInfo(name = "lamaSewa")
+    val lamaSewa: String
+){
+    @PrimaryKey(autoGenerate = true)
+    var userId:Int = 0
+    var kostId:Int = 0
 }

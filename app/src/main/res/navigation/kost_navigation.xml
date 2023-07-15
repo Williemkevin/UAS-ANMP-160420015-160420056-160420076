@@ -37,6 +37,9 @@
         <action
             android:id="@+id/actionSimulasiFragment"
             app:destination="@id/simulasiPembayaranFragment" />
+        <action
+            android:id="@+id/action_detailKostFragment_to_bookKostFragment"
+            app:destination="@id/bookKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemProfile"
@@ -105,4 +108,12 @@
         android:name="id.ac.ubaya.informatika.ubayakostuas.view.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/bookKostFragment"
+        android:name="id.ac.ubaya.informatika.ubayakostuas.view.BookKostFragment"
+        android:label="BookKostFragment" >
+        <argument
+            android:name="idKost"
+            app:argType="integer" />
+    </fragment>
 </navigation>

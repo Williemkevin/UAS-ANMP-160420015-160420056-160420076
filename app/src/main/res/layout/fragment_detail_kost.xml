@@ -8,7 +8,7 @@
             name="kost"
             type="id.ac.ubaya.informatika.ubayakostuas.model.Kost" />
         <variable
-            name="contactUsListener"
+            name="bookingListener"
             type="id.ac.ubaya.informatika.ubayakostuas.view.DetailInterface" />
         <variable
             name="simulasiListener"
@@ -235,15 +235,15 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/btnContactUs"
+                android:id="@+id/btnBookingKost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="24dp"
-                android:text="Contact Us"
-                android:tag="@{kost.idKost}"
                 android:contentDescription="@{kost.phone}"
-                android:onClick="@{contactUsListener::onContactUsClick}"
+                android:onClick="@{bookingListener::bookingClick}"
+                android:tag="@{kost.idKost}"
+                android:text="Booking"
                 app:icon="@drawable/baseline_chat_24"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -259,19 +259,19 @@
                 app:layout_constraintTop_toTopOf="@+id/imgDetail" />
 
             <TextView
-                android:id="@+id/txtSimulasi"
+                android:id="@+id/txtContactUs"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
                 android:layout_marginBottom="4dp"
-                android:text="Simulasi Pembayaran"
+                android:contentDescription="@{kost.harga_per_minggu.toString()}"
+                android:onClick="@{simulasiListener::onContactClick}"
+                android:tag="@{kost.idKost}"
+                android:text="Contact Us"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textColor="#63DD68"
                 android:textStyle="bold"
-                android:tag="@{kost.harga_per_bulan}"
-                android:contentDescription="@{kost.harga_per_minggu.toString()}"
-                android:onClick="@{contactUsListener::onSimulasiClick}"
-                app:layout_constraintBottom_toTopOf="@+id/btnContactUs"
+                app:layout_constraintBottom_toTopOf="@+id/btnBookingKost"
                 app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

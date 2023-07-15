@@ -29,7 +29,7 @@ class DetailKostFragment : Fragment(), DetailInterface {
     ): View? {
         // Inflate the layout for this fragment
         dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail_kost, container, false)
-        dataBinding.contactUsListener = this
+        dataBinding.bookingListener = this
         dataBinding.simulasiListener = this
 
         return dataBinding.root
@@ -52,17 +52,17 @@ class DetailKostFragment : Fragment(), DetailInterface {
         })
     }
 
-    override fun onContactUsClick(v: View) {
+    override fun onContactClick(v: View) {
         val idKost = v.tag.toString().toInt()
 
         val action = DetailKostFragmentDirections.actionContactFragment(idKost)
         Navigation.findNavController(v).navigate(action)
     }
 
-    override fun onSimulasiClick(v: View) {
+    override fun bookingClick(v: View) {
         val idKost = v.tag.toString().toInt()
 
-        val action = DetailKostFragmentDirections.actionSimulasiFragment(idKost)
+        val action = DetailKostFragmentDirections.actionDetailKostFragmentToBookKostFragment(idKost)
         Navigation.findNavController(v).navigate(action)
     }
 }

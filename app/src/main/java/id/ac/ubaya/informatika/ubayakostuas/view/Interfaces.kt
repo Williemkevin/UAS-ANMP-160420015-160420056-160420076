@@ -7,10 +7,12 @@ import id.ac.ubaya.informatika.ubayakostuas.model.User
 interface KostListInterface {
     fun onDetailClick(v: View)
 }
-
+interface BookInterface {
+    fun onDetailClick(v: View)
+}
 interface DetailInterface{
-    fun onContactUsClick(v: View)
-    fun onSimulasiClick(v: View)
+    fun onContactClick(v: View)
+    fun bookingClick(v: View)
 }
 
 interface SimulasiInterface{
