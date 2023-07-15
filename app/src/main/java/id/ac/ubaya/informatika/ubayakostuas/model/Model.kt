@@ -40,17 +40,17 @@ data class Kost(
 @Entity("users")
 data class User(
     @ColumnInfo(name = "name")
-    val nama:String?,
+    var nama:String?,
     @ColumnInfo(name = "email")
-    val email:String?,
+    var email:String?,
     @ColumnInfo(name = "phone")
-    val telepon:String?,
+    var telepon:String?,
     @ColumnInfo(name = "username")
-    val username:String?,
+    var username:String?,
     @ColumnInfo(name = "password")
-    val password:String?,
+    var password:String?,
     @ColumnInfo(name = "gender")
-    val gender:Int?,
+    var gender:Int?,
 ){
     @PrimaryKey(autoGenerate = true)
     var idUser:Int = 0

@@ -6,50 +6,48 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.RadioButton
+import android.widget.EditText
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputEditText
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentRegisterBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 
 
-class RegisterFragment : Fragment() {
-
+class RegisterFragment : Fragment(), RegisterInterface {
     private lateinit var userViewModel: UserViewModel
+    private lateinit var dataBinding:FragmentRegisterBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_register, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        val btnRegister = view?.findViewById<Button>(R.id.btnRegister)
-        btnRegister?.setOnClickListener {
-            var txtName = view?.findViewById<TextInputEditText>(R.id.txtInputNameRegister)
-            var txtEmail = view?.findViewById<TextInputEditText>(R.id.txtInputEmailRegister)
-            var txtPhone = view?.findViewById<TextInputEditText>(R.id.txtInputPhoneRegister)
-            var txtUsername = view?.findViewById<TextInputEditText>(R.id.txtInputUsernameRegister)
-            var txtpassword = view?.findViewById<TextInputEditText>(R.id.txtInputPasswordlRegister)
+        dataBinding.user = User("","","","","",3)
+        dataBinding.register = this
+        dataBinding.radioListener = this
+    }
 
-            val selectedGender = view?.findViewById<RadioGroup>(R.id.radioGroup)?.checkedRadioButtonId
-//            val radioButton = view?.findViewById<RadioButton>(selectedGender!!)
+    override fun onRadioClick(v: View, gender: Int, obj: User) {
+        obj.gender = gender
+    }
 
-            var user = User(txtName.toString(),txtEmail.toString(),txtPhone.toString(),txtUsername.toString(),txtpassword.toString(), selectedGender)
-
-            val listUser = listOf(user)
-            userViewModel.addUser(listUser)
-
-            Toast.makeText(view.context, "Register Success", Toast.LENGTH_LONG).show()
-            Navigation.findNavController(it).popBackStack()
-        }
+    override fun onRegisterClick(v: View, obj: User) {
+        val list = listOf(dataBinding.user!!)
+        userViewModel.addUser(list)
+        Toast.makeText(v.context, "Registration Success", Toast.LENGTH_LONG).show()
+        Navigation.findNavController(v).popBackStack()
     }
 }
