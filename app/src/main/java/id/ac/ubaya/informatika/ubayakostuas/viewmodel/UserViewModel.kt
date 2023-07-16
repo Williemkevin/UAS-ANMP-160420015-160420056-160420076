@@ -1,6 +1,8 @@
 package id.ac.ubaya.informatika.ubayakostuas.viewmodel
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
@@ -15,6 +17,7 @@ import kotlin.coroutines.CoroutineContext
 
 class UserViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
     val checkLogin: MutableLiveData<Boolean> = MutableLiveData()
+    val userId: MutableLiveData<Int> = MutableLiveData()
 
     private var job = Job()
 
@@ -26,6 +29,7 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
             val db = buildDb(getApplication())
             val user =  db.userDao().getUserByEmail(email)
             checkLogin.postValue(password == user?.password ?: false)
+            userId.postValue(user?.idUser)
         }
     }
 

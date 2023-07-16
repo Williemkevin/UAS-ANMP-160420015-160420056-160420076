@@ -10,7 +10,7 @@ interface UserDao {
     @Query("SELECT * FROM users")
     fun selectAllUser(): List<User>
 
-    @Query("SELECT * FROM users WHERE email = :email")
+    @Query("SELECT * FROM users WHERE email = :email LIMIT 1")
     fun getUserByEmail(email: String): User
 
     @Query("SELECT * FROM users WHERE idUser= :id")

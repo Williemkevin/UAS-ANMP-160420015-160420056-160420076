@@ -46,10 +46,13 @@ class LoginFragment : Fragment() {
             userViewModel.checkLogin.observe(this) { checkLogin ->
                 if (checkLogin) {
                     var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
-                    val sharedPreferences =
-                        requireActivity().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+                    val sharedPreferences = requireActivity().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
                     var editor: SharedPreferences.Editor = sharedPreferences.edit()
                     editor.putBoolean("login", true)
+
+                    userViewModel.userId.observe(this) { userId ->
+                        editor.putInt("idUser", userId)
+                    }
                     editor.apply()
 
                     val navController = findNavController()
