@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.room.Room
 import androidx.room.migration.Migration
@@ -12,7 +13,7 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
-import java.lang.Exception
+import java.text.DecimalFormat
 
 fun ImageView.loadImage(url: String?, progressBar:ProgressBar){
     Picasso.get()
@@ -61,4 +62,11 @@ val MIGRATION_2_3 = object : Migration(2, 3) {
 @BindingAdapter("android:imageUrl", "android:progressBar")
 fun loadPhotoURL(view:ImageView, url: String?, pb:ProgressBar){
     view.loadImage(url, pb)
+}
+
+@BindingAdapter("android:hargaFormat")
+fun format(textView: TextView, harga: Int) {
+    val decimalFormat = DecimalFormat("##,###")
+    val formattedHarga = "Rp. " + decimalFormat.format(harga)
+    textView.text = formattedHarga
 }

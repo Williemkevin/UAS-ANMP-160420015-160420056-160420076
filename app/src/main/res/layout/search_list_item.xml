@@ -81,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
-                    android:text="@{kost.harga_per_bulan.toString()}"
+                    android:hargaFormat="@{kost.harga_per_bulan}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/design_default_color_error"
                     android:textSize="16sp"

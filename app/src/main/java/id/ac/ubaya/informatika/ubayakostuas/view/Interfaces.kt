@@ -3,9 +3,15 @@ package id.ac.ubaya.informatika.ubayakostuas.view
 import android.view.View
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.model.User
+import java.text.DecimalFormat
 
 interface KostListInterface {
     fun onDetailClick(v: View)
+
+    fun formatHarga(harga: Int): String? {
+        val decimalFormat = DecimalFormat("##,###")
+        return "Rp " + decimalFormat.format(harga)
+    }
 }
 interface BookInterface {
     fun onDetailClick(v: View)
