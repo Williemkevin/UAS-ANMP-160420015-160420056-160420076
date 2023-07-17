@@ -35,7 +35,7 @@ class RegisterFragment : Fragment(), RegisterInterface {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        dataBinding.user = User("","","","","",3)
+        dataBinding.user = User("","","","","",3, "")
         dataBinding.register = this
         dataBinding.radioListener = this
     }

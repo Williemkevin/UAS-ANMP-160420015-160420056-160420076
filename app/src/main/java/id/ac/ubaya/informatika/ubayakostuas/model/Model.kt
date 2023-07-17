@@ -52,6 +52,8 @@ data class User(
     var password:String?,
     @ColumnInfo(name = "gender")
     var gender:Int?,
+    @ColumnInfo(name = "picture")
+    var picture:String?
 ){
     @PrimaryKey(autoGenerate = true)
     var idUser:Int = 0

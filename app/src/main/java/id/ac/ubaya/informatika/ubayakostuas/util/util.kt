@@ -35,7 +35,7 @@ fun ImageView.loadImage(url: String?, progressBar:ProgressBar){
 val DB_NAME = "newkostdb"
 fun buildDb(context: Context):KostDatabase {
     val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_NAME).addMigrations(
-        MIGRATION_1_2, MIGRATION_2_3)
+        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
         .build()
     return db
 }
@@ -54,6 +54,13 @@ val MIGRATION_2_3 = object : Migration(2, 3) {
     override fun migrate(database: SupportSQLiteDatabase) {
         database.execSQL(
             ""
+        )
+    }
+}
+val MIGRATION_3_4 = object : Migration(3, 4) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "ALTER TABLE users ADD COLUMN picture TEXT DEFAULT 'https://media.istockphoto.com/id/1338134336/photo/headshot-portrait-african-30s-man-smile-look-at-camera.jpg?b=1&s=170667a&w=0&k=20&c=j-oMdWCMLx5rIx-_W33o3q3aW9CiAWEvv9XrJQ3fTMU='"
         )
     }
 }
