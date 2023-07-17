@@ -62,7 +62,7 @@ class DetailKostFragment : Fragment(), DetailInterface {
     override fun bookingClick(v: View) {
         val idKost = v.tag.toString().toInt()
 
-        val action = DetailKostFragmentDirections.actionDetailKostFragmentToBookKostFragment(idKost)
+        val action = DetailKostFragmentDirections.actionBookFragment(idKost)
         Navigation.findNavController(v).navigate(action)
     }
 }

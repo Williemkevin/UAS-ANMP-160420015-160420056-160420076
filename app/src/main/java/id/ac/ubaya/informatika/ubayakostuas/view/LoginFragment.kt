@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 
 class LoginFragment : Fragment() {
@@ -52,6 +53,7 @@ class LoginFragment : Fragment() {
 
                     userViewModel.userId.observe(this) { userId ->
                         editor.putInt("idUser", userId)
+                        Global.id = userId
                     }
                     editor.apply()
 

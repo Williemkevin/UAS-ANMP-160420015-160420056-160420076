@@ -38,7 +38,7 @@
             android:id="@+id/actionSimulasiFragment"
             app:destination="@id/simulasiPembayaranFragment" />
         <action
-            android:id="@+id/action_detailKostFragment_to_bookKostFragment"
+            android:id="@+id/actionBookFragment"
             app:destination="@id/bookKostFragment" />
     </fragment>
     <fragment

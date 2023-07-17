@@ -18,6 +18,7 @@ import kotlin.coroutines.CoroutineContext
 class UserViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
     val checkLogin: MutableLiveData<Boolean> = MutableLiveData()
     val userId: MutableLiveData<Int> = MutableLiveData()
+    val userLD = MutableLiveData<User>()
 
     private var job = Job()
 
@@ -33,20 +34,24 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         }
     }
 
-//    fun refresh(){
-//        loadingLD.value = true
-//        userLoadErrorLD.value = false
-//
-//        launch {
-//            val db = buildDb(getApplication())
-//            userLD.postValue(db.userDao().selectAllUser())
-//        }
-//    }
-//
+    fun getData(id:Int) {
+        launch {
+            val db = buildDb(getApplication())
+            userLD.postValue(db.userDao().selectUser(id))
+        }
+    }
+
     fun addUser(list: List<User>){
         launch {
             val db = buildDb(getApplication())
             db.userDao().insertUser(*list.toTypedArray())
+        }
+    }
+
+    fun updateUser(user: User) {
+        launch {
+            val db = buildDb(getApplication())
+            db.userDao().updateUser(user)
         }
     }
 }

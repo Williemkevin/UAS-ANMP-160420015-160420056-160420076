@@ -11,55 +11,61 @@ import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.google.android.material.textfield.TextInputEditText
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentProfileBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Global
+import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
+import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : Fragment(), ProfileInterface {
+    private lateinit var viewModel: UserViewModel
+    private lateinit var dataBinding:FragmentProfileBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        dataBinding = DataBindingUtil.inflate<FragmentProfileBinding>(inflater, R.layout.fragment_profile, container, false)
+        return dataBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        view.findViewById<TextInputEditText>(R.id.txtNameProfile).setText(Global.name)
-        view.findViewById<TextInputEditText>(R.id.txtEmailProfile).setText(Global.email)
-        view.findViewById<TextInputEditText>(R.id.txtPhoneProfile).setText(Global.phone)
-        if (Global.gender == "Male"){
-            view.findViewById<RadioGroup>(R.id.radioGroup).check(R.id.rdoMale)
-        } else if (Global.gender == "Female"){
-            view.findViewById<RadioGroup>(R.id.radioGroup).check(R.id.rdoFemale)
-        } else{
-            view.findViewById<RadioGroup>(R.id.radioGroup).check(R.id.rdoOthers)
-        }
-        var imageView = view.findViewById<ImageView>(R.id.imageViewProfile)
-        var progressBar = view.findViewById<ProgressBar>(R.id.progressBarProfile)
-        imageView.loadImage(Global.picture, progressBar)
+        dataBinding.radioListener = this
+        dataBinding.save = this
+        dataBinding.aboutListener = this
 
-        view.findViewById<Button>(R.id.btnAbout).setOnClickListener {
-            val action = ProfileFragmentDirections.actionAboutFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+        viewModel.getData(Global.id)
 
-        view.findViewById<Button>(R.id.btnSaveProfile).setOnClickListener {
-            Global.name = view.findViewById<TextInputEditText>(R.id.txtNameProfile).text.toString()
-            Global.email = view.findViewById<TextInputEditText>(R.id.txtEmailProfile).text.toString()
-            Global.phone = view.findViewById<TextInputEditText>(R.id.txtPhoneProfile).text.toString()
-            if (view.findViewById<RadioButton>(R.id.rdoMale).isChecked){
-                Global.gender = "Male"
-            } else if(view.findViewById<RadioButton>(R.id.rdoFemale).isChecked){
-                Global.gender = "Female"
-            } else{
-                Global.gender = "Others"
-            }
-            Toast.makeText(activity,"Success Update Profile", Toast.LENGTH_SHORT).show()
-        }
+        observeViewModel()
+
+    }
+    fun observeViewModel() {
+        viewModel.userLD.observe(viewLifecycleOwner, Observer {
+            dataBinding.user = it
+        })
+    }
+
+    override fun onRadioClick(v: View, gender: Int, obj: User) {
+        obj.gender = v.tag.toString().toInt()
+    }
+
+    override fun onUserSaveClick(v: View, obj: User) {
+        viewModel.updateUser(obj)
+        Toast.makeText(v.context, "User Updated", Toast.LENGTH_SHORT).show()
+        Navigation.findNavController(v).popBackStack()
+    }
+
+    override fun aboutClick(v: View) {
+        val action = ProfileFragmentDirections.actionAboutFragment()
+        Navigation.findNavController(v).navigate(action)
     }
 }

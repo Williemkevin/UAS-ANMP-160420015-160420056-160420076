@@ -23,3 +23,9 @@ interface RegisterInterface{
     fun onRadioClick(v:View, gender:Int, obj:User)
     fun onRegisterClick(v: View, obj: User)
 }
+
+interface ProfileInterface{
+    fun onRadioClick(v:View, gender:Int, obj:User)
+    fun onUserSaveClick(v: View, obj: User)
+    fun aboutClick(v: View)
+}

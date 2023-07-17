@@ -16,8 +16,10 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE idUser= :id")
     fun selectUser(id:Int): User
 
-    @Query("UPDATE users SET name=:name, email=:email, phone=:telepon, gender=:gender WHERE idUser = :id")
-    fun updateUser(name:String, email:String, telepon:String, gender:Int, id:Int)
+//    @Query("UPDATE users SET name=:name, email=:email, phone=:telepon, gender=:gender WHERE idUser = :id")
+//    fun updateUser(name:String, email:String, telepon:String, gender:Int, id:Int)
+    @Update
+    fun updateUser(vararg user:User)
 
     @Delete
     fun deleteUser(user: User)
