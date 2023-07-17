@@ -18,9 +18,6 @@
             android:id="@+id/action_itemHome_to_loginFragment"
             app:destination="@id/loginFragment" />
         =======
-        <argument
-            android:name="user_id"
-            app:argType="integer" />
 
     </fragment>
     <fragment
@@ -49,6 +46,9 @@
         <action
             android:id="@+id/actionAboutFragment"
             app:destination="@id/aboutFragment" />
+        <action
+            android:id="@+id/actionLoginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/itemSearch"

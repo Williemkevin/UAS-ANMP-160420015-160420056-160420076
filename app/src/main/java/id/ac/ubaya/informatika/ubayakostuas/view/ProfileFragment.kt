@@ -1,6 +1,9 @@
 package id.ac.ubaya.informatika.ubayakostuas.view
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +29,7 @@ import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 class ProfileFragment : Fragment(), ProfileInterface {
     private lateinit var viewModel: UserViewModel
     private lateinit var dataBinding:FragmentProfileBinding
+    private lateinit var sharedPreferences: SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -41,6 +45,7 @@ class ProfileFragment : Fragment(), ProfileInterface {
         dataBinding.radioListener = this
         dataBinding.save = this
         dataBinding.aboutListener = this
+        dataBinding.logoutListener = this
 
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel.getData(Global.id)
@@ -67,5 +72,15 @@ class ProfileFragment : Fragment(), ProfileInterface {
     override fun aboutClick(v: View) {
         val action = ProfileFragmentDirections.actionAboutFragment()
         Navigation.findNavController(v).navigate(action)
+    }
+
+    override fun logoutClick(v: View) {
+        val action = ProfileFragmentDirections.actionLoginFragment()
+        Navigation.findNavController(v).navigate(action)
+        var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
+        sharedPreferences = requireContext().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove("login")
+        editor.apply()
     }
 }

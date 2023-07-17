@@ -74,21 +74,6 @@ class MainActivity : AppCompatActivity() {
 //        )
 //        viewModelUser.addUser(user)
 
-//        bottomNav.setOnNavigationItemSelectedListener { menuItem ->
-//            when (menuItem.itemId) {
-//                R.id.itemLogout -> {
-//                    navController = (supportFragmentManager.findFragmentById(R.id.hostFragment) as NavHostFragment).navController
-//                    navController.navigate(R.id.action_itemHome_to_loginFragment)
-//
-//                    val editor = sharedPreferences.edit()
-//                    editor.remove("login")
-//                    editor.apply()
-//                    true
-//                }
-//                else -> false
-//            }
-//        }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {

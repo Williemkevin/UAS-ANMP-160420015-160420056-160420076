@@ -34,4 +34,5 @@ interface ProfileInterface{
     fun onRadioClick(v:View, gender:Int, obj:User)
     fun onUserSaveClick(v: View, obj: User)
     fun aboutClick(v: View)
+    fun logoutClick(v: View)
 }

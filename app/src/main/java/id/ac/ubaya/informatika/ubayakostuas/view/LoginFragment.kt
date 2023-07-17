@@ -12,6 +12,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import id.ac.ubaya.informatika.ubayakostuas.R
@@ -57,20 +58,12 @@ class LoginFragment : Fragment() {
                     }
                     editor.apply()
 
-                    val navController = findNavController()
-                    navController.navigateUp()
+                    val action = LoginFragmentDirections.actionHome()
+                    Navigation.findNavController(it).navigate(action)
                 } else {
                     Toast.makeText(context, "Password Salah", Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
-
-//        userViewModel.userLD.observe(viewLifecycleOwner, Observer {
-//            Toast.makeText(context, it.nama, Toast.LENGTH_SHORT).show()
-//            if (it.password == textInputPassword.toString()){
-//                Toast.makeText(context, it.password, Toast.LENGTH_SHORT).show()
-//            }
-//        })
     }
 }
