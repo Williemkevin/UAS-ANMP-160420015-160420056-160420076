@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room
+import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
 import kotlinx.coroutines.CoroutineScope
@@ -52,6 +53,13 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         launch {
             val db = buildDb(getApplication())
             db.userDao().updateUser(user)
+        }
+    }
+
+    fun changePassword(curPass:String,newPass:String){
+        launch {
+            val db = buildDb(getApplication())
+            val user =  db.userDao().changePasswordUser(newPass,Global.id)
         }
     }
 }
