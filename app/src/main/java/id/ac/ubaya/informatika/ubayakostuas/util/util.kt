@@ -77,17 +77,3 @@ fun format(textView: TextView, harga: Int) {
     val formattedHarga = "Rp. " + decimalFormat.format(harga)
     textView.text = formattedHarga
 }
-
-@BindingAdapter("app:hargaBookKostMinggu")
-fun setHargaBookKostMinggu(textView: TextView, isPerMinggu: Boolean) {
-    if (isPerMinggu) {
-        textView.text = "Per Minggu"
-    }
-}
-
-@BindingAdapter("app:hargaBookKostBulan")
-fun setHargaBookKostBulan(textView: TextView, isPerBulan: Boolean) {
-    if (isPerBulan) {
-        textView.text = "Per Bulan"
-    }
-}

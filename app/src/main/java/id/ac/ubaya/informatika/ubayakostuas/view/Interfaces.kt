@@ -8,9 +8,13 @@ import java.text.DecimalFormat
 interface KostListInterface {
     fun onDetailClick(v: View)
 
+    fun formatHarga(harga: Int): String? {
+        val decimalFormat = DecimalFormat("##,###")
+        return "Rp " + decimalFormat.format(harga)
+    }
 }
 interface BookInterface {
-    fun onRadioClick(v:View, harga:Int, obj:Kost)
+    fun onDetailClick(v: View)
 }
 interface DetailInterface{
     fun onContactClick(v: View)

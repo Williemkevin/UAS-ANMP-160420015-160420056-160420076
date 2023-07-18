@@ -10,9 +10,6 @@
         <variable
             name="bookListener"
             type="id.ac.ubaya.informatika.ubayakostuas.view.BookInterface" />
-        <variable
-            name="radioListener"
-            type="id.ac.ubaya.informatika.ubayakostuas.view.BookInterface" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +21,6 @@
             android:layout_width="411dp"
             android:layout_height="192dp"
             android:scaleType="centerCrop"
-            android:imageUrl="@{kost.picture}"
-            android:progressBar="@{progressBarBook}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -54,7 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:text="@{kost.nama}"
+                    android:text="Nama Kost"
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold"
@@ -67,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="16dp"
-                    android:text="@{kost.alamat}"
+                    android:text="Alamat"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/txtKostName"
@@ -99,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:hargaBookKost="@{kost}"
+                    android:text="Rp. "
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -128,6 +123,26 @@
                     app:layout_constraintStart_toEndOf="@+id/textView30"
                     app:layout_constraintTop_toBottomOf="@+id/txtHargaBookKost" />
 
+                <RadioButton
+                    android:id="@+id/rdoBookBulan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Per Bulan"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toStartOf="@+id/textView30"
+                    app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+                <RadioButton
+                    android:id="@+id/rdoBookMinggu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Per Minggu"
+                    android:textSize="16sp"
+                    app:layout_constraintStart_toEndOf="@+id/rdoBookBulan"
+                    app:layout_constraintTop_toTopOf="@+id/rdoBookBulan" />
+
                 <Button
                     android:id="@+id/btnBook"
                     android:layout_width="0dp"
@@ -140,49 +155,10 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
-
-                <RadioGroup
-                    android:id="@+id/radioGroup3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDateMasuk">
-
-                    <RadioButton
-                        android:id="@+id/rdoPerMinggu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Per Minggu"
-                        android:onClick="@{(view)->radioListener.onRadioClick(view,1, kost)}"
-                        android:tag="1"/>
-
-                    <RadioButton
-                        android:id="@+id/rdoPerBulan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Per Bulan"
-                        android:onClick="@{(view)->radioListener.onRadioClick(view,2, kost)}"
-                        android:tag="2"/>
-                </RadioGroup>
+                    app:layout_constraintTop_toBottomOf="@+id/rdoBookMinggu" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
-
-        <ProgressBar
-            android:id="@+id/progressBarBook"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imgViewKost"
-            app:layout_constraintEnd_toEndOf="@+id/imgViewKost"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
