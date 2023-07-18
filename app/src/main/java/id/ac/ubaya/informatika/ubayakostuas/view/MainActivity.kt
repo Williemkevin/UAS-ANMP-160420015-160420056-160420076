@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 //
 //        viewModelUser = ViewModelProvider(this).get(UserViewModel::class.java)
 //        val user = listOf(
-//            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1)
+//            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1, "")
 //        )
 //        viewModelUser.addUser(user)
 

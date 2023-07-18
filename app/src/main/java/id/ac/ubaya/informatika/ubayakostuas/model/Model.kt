@@ -59,15 +59,17 @@ data class User(
     var idUser:Int = 0
 }
 
-@Entity(tableName = "user_book_kost", primaryKeys = ["userId", "kostId"])
+@Entity("user_book_kost")
 data class UserBookKost(
     @ColumnInfo(name = "tanggalMasuk")
-    val tanggalMasuk: Date,
-
+    val tanggalMasuk: Int,
     @ColumnInfo(name = "lamaSewa")
-    val lamaSewa: String
+    val lamaSewa: Int,
+    @ColumnInfo(name = "userId")
+    val userId: Int,
+    @ColumnInfo(name = "kostId")
+    val kostId: Int,
 ){
     @PrimaryKey(autoGenerate = true)
-    var userId:Int = 0
-    var kostId:Int = 0
+    var bookingId:Int = 0
 }

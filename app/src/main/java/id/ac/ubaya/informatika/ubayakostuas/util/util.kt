@@ -35,7 +35,7 @@ fun ImageView.loadImage(url: String?, progressBar:ProgressBar){
 val DB_NAME = "newkostdb"
 fun buildDb(context: Context):KostDatabase {
     val db = Room.databaseBuilder(context, KostDatabase::class.java, DB_NAME).addMigrations(
-        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+        MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
         .build()
     return db
 }
@@ -62,6 +62,12 @@ val MIGRATION_3_4 = object : Migration(3, 4) {
         database.execSQL(
             "ALTER TABLE users ADD COLUMN picture TEXT DEFAULT 'https://media.istockphoto.com/id/1338134336/photo/headshot-portrait-african-30s-man-smile-look-at-camera.jpg?b=1&s=170667a&w=0&k=20&c=j-oMdWCMLx5rIx-_W33o3q3aW9CiAWEvv9XrJQ3fTMU='"
         )
+    }
+}
+val MIGRATION_4_5 = object : Migration(4, 5) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+        database.execSQL(
+            "CREATE TABLE user_book_kost(bookingId INTEGER PRIMARY KEY NOT NULL, tanggalMasuk INTEGER NOT NULL, lamaSewa INTEGER NOT NULL, userId INTEGER NOT NULL, kostId INTEGER NOT NULL);")
     }
 }
 
