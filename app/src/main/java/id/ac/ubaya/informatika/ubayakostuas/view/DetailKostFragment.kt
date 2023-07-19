@@ -5,20 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentDetailKostBinding
-import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
-import java.text.NumberFormat
-import java.util.Locale
 
 class DetailKostFragment : Fragment(), DetailInterface {
     private lateinit var detailModel: DetailViewModel
