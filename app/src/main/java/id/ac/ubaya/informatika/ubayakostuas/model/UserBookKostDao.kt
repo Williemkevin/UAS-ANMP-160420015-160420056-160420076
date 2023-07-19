@@ -4,10 +4,10 @@ import androidx.room.*
 
 @Dao
 interface UserBookKostDao {
-//    @Insert(onConflict = OnConflictStrategy.REPLACE)
-//    fun insertAll(vararg bookKost: UserBookKost)
-//
-//    @Query("SELECT * FROM bookkost")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(vararg bookKost: UserBookKost)
+
+//    @Query("SELECT * FROM user_book_kost")
 //    fun selectAllBookKost(): List<Kost>
 //
 //    @Query("SELECT * FROM kosts WHERE userid=:userId")

@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.reflect.TypeToken
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
+import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
 import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -38,4 +39,10 @@ class DetailViewModel(application: Application) :AndroidViewModel(application), 
 //            db.kostDao().update(id)
 //        }
 //    }
+    fun addBookKost(UserBookKost: UserBookKost){
+        launch {
+            val db = buildDb(getApplication())
+            db.userBookKost().insertAll(UserBookKost)
+        }
+    }
 }

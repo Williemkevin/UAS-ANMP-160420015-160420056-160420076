@@ -21,6 +21,7 @@ import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 import android.content.Context
 import android.widget.Toast
 import androidx.navigation.findNavController
+import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -73,6 +74,10 @@ class MainActivity : AppCompatActivity() {
 //            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1, "")
 //        )
 //        viewModelUser.addUser(user)
+
+//        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+//        val bookKost = UserBookKost(12,13,14,15)
+//        viewModel.addBookKost(bookKost)
 
     }
 
