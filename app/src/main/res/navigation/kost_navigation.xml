@@ -111,7 +111,7 @@
     <fragment
         android:id="@+id/bookKostFragment"
         android:name="id.ac.ubaya.informatika.ubayakostuas.view.BookKostFragment"
-        android:label="BookKostFragment" >
+        android:label="Book Kost">
         <argument
             android:name="idKost"
             app:argType="integer" />
