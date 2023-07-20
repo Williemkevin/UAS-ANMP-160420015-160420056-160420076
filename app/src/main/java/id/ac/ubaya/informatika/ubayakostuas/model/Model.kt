@@ -62,13 +62,13 @@ data class User(
 @Entity("user_book_kost")
 data class UserBookKost(
     @ColumnInfo(name = "tanggalMasuk")
-    val tanggalMasuk: Int,
+    var tanggalMasuk: Int,
     @ColumnInfo(name = "lamaSewa")
-    val lamaSewa: Int,
+    var lamaSewa: Int,
     @ColumnInfo(name = "userId")
-    val userId: Int,
+    var userId: Int,
     @ColumnInfo(name = "kostId")
-    val kostId: Int,
+    var kostId: Int,
 ){
     @PrimaryKey(autoGenerate = true)
     var bookingId:Int = 0

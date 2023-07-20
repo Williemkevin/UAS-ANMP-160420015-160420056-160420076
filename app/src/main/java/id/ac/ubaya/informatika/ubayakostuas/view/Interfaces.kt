@@ -3,13 +3,16 @@ package id.ac.ubaya.informatika.ubayakostuas.view
 import android.view.View
 import id.ac.ubaya.informatika.ubayakostuas.model.Kost
 import id.ac.ubaya.informatika.ubayakostuas.model.User
+import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
 import java.text.DecimalFormat
 
 interface KostListInterface {
     fun onDetailClick(v: View)
 }
 interface BookInterface {
-    fun onDetailClick(v: View)
+    fun onRadioClick(v:View, lamaSewa:Int, obj:UserBookKost)
+
+    fun onBookClick(v: View, obj: UserBookKost)
 }
 interface DetailInterface{
     fun onContactClick(v: View)

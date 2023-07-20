@@ -12,14 +12,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentBookKostBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Global
+import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
 import java.util.*
 
-class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateSetListener {
+class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateSetListener, BookInterface {
     private lateinit var detailModel: DetailViewModel
     private lateinit var dataBinding: FragmentBookKostBinding
     private lateinit var sharedPreferences: SharedPreferences
@@ -39,15 +41,17 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        dataBinding.dateListener = this
-
         val idKost = BookKostFragmentArgs.fromBundle(requireArguments()).idKost
 
         detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         detailModel.fetch(idKost)
 
-        val btnBook = view?.findViewById<Button>(R.id.btnBook)
-        val rdoBulan = view?.findViewById<RadioButton>(R.id.rdoBookBulan)
+        dataBinding.bookKost = UserBookKost(0,0,0,0)
+
+        dataBinding.dateListener = this
+        dataBinding.bookListener = this
+        dataBinding.radioListener = this
+
         val radioGroupSewa = view?.findViewById<RadioGroup>(R.id.radioGroupSewa)
         detailModel.kostLD.observe(viewLifecycleOwner, Observer {
             radioGroupSewa!!.setOnCheckedChangeListener { _, checkedId ->
@@ -59,17 +63,6 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
                 }
             }
         })
-
-        btnBook?.setOnClickListener {
-            val sewa = if (rdoBulan!!.isChecked) 1 else 2
-            val c = Calendar.getInstance()
-            c.set(year,month,day,0,0,0)
-            var date = (c.timeInMillis/1000L).toInt()
-
-            detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-            val bookKost = UserBookKost(date,sewa, Global.id,idKost)
-            detailModel.addBookKost(bookKost)
-        }
 
         observeViewModel()
     }
@@ -96,6 +89,26 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
         activity?.let {
                 it1 -> DatePickerDialog(it1, this, year, month, day).show()
         }
+    }
+
+    override fun onRadioClick(v: View, lamaSewa: Int, obj: UserBookKost) {
+        obj.lamaSewa = lamaSewa
+    }
+
+    override fun onBookClick(v: View, obj: UserBookKost) {
+        val c = Calendar.getInstance()
+        c.set(year,month,day,0,0,0)
+        var date = (c.timeInMillis/1000L).toInt()
+
+        obj.userId = Global.id
+        obj.tanggalMasuk = date
+        obj.kostId = v.tag as Int
+
+        val bookKost = UserBookKost(date,obj.lamaSewa, obj.userId, obj.kostId)
+
+        detailModel.addBookKost(bookKost)
+        Toast.makeText(v.context, "Booking Success", Toast.LENGTH_LONG).show()
+        Navigation.findNavController(v).popBackStack()
     }
 
 }
