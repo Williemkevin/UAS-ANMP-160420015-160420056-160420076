@@ -18,6 +18,7 @@ import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentBookKostBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
+import id.ac.ubaya.informatika.ubayakostuas.util.NotifHelper
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
 import java.util.*
 
@@ -109,6 +110,8 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
         detailModel.addBookKost(bookKost)
         Toast.makeText(v.context, "Booking Success", Toast.LENGTH_LONG).show()
         Navigation.findNavController(v).popBackStack()
+
+        NotifHelper(v.context).createNotification("Booking Kost Berhasil", "Terimakasih sudah melakukan booking kost")
     }
 
 }
