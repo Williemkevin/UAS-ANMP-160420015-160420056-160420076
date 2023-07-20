@@ -96,9 +96,16 @@ fun startBooking(textView: TextView, tanggal: Int) {
 @BindingAdapter("android:lamaSewa", "android:bookingAwal")
 fun tanggalBerakhir(textView: TextView, lamaSewa: Int, bookingAwal:Int) {
     if(lamaSewa == 0){
-        val end = bookingAwal + 2592000000
-        val date = end * 1000
+        val c = Calendar.getInstance()
+        c.timeInMillis = bookingAwal.toLong() * 1000
+        c.add(Calendar.MONTH, 1)
         val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
-        textView.text = dateFormat.format(Date(date))
+        textView.text = dateFormat.format(c.time)
+    } else if(lamaSewa == 2){
+        val c = Calendar.getInstance()
+        c.timeInMillis = bookingAwal.toLong() * 1000
+        c.add(Calendar.WEEK_OF_MONTH, 1)
+        val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        textView.text = dateFormat.format(c.time)
     }
 }
