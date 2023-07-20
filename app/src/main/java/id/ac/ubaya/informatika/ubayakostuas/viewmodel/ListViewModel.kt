@@ -40,5 +40,16 @@ class ListViewModel(application: Application):AndroidViewModel(application), Cor
         }
     }
 
+    fun getHistoryBookKost(idUser: Int){
+        loadingLD.value = true
+        kostLoadErrorLD.value = false
+
+        launch {
+            val db = buildDb(getApplication())
+            kostsLD.postValue(db.userBookKost().selectBookKost(1))
+        }
+    }
+
+
 
 }

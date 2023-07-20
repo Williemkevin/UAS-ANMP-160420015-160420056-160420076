@@ -116,4 +116,9 @@
             android:name="idKost"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/itemHistory"
+        android:name="id.ac.ubaya.informatika.ubayakostuas.view.HistoryBookKostFragment"
+        android:label="fragment_history_book_kost"
+        tools:layout="@layout/fragment_history_book_kost" />
 </navigation>

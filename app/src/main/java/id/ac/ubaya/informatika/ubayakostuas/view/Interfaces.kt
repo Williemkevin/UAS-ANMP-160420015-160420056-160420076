@@ -18,7 +18,12 @@ interface DetailInterface{
     fun onContactClick(v: View)
     fun bookingClick(v: View)
 }
-
+interface HistoryKostInterface {
+    fun formatHarga(harga: Int): String? {
+        val decimalFormat = DecimalFormat("##,###")
+        return "Rp " + decimalFormat.format(harga)
+    }
+}
 interface SimulasiInterface{
     fun onRadioClick(v: View, value:Int, obj:Kost)
 }

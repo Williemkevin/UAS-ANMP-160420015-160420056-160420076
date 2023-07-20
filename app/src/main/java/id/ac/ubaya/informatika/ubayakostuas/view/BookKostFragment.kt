@@ -102,9 +102,9 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
 
         obj.userId = Global.id
         obj.tanggalMasuk = date
-        obj.kostId = v.tag as Int
+        obj.idKost = v.tag as Int
 
-        val bookKost = UserBookKost(date,obj.lamaSewa, obj.userId, obj.kostId)
+        val bookKost = UserBookKost(date,obj.lamaSewa, obj.userId, obj.idKost)
 
         detailModel.addBookKost(bookKost)
         Toast.makeText(v.context, "Booking Success", Toast.LENGTH_LONG).show()

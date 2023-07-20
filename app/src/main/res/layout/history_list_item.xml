@@ -7,12 +7,12 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardHistoryKost"
-        android:layout_width="170dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="373dp"
+        android:layout_height="293dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="15dp"
         app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -23,7 +23,7 @@
             <ImageView
                 android:id="@+id/imageViewHistoryKost"
                 android:layout_width="0dp"
-                android:layout_height="130dp"
+                android:layout_height="182dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="monospace"
                 android:text="Nama Kost"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2"

@@ -67,8 +67,8 @@ data class UserBookKost(
     var lamaSewa: Int,
     @ColumnInfo(name = "userId")
     var userId: Int,
-    @ColumnInfo(name = "kostId")
-    var kostId: Int,
+    @ColumnInfo(name = "idKost")
+    var idKost: Int,
 ){
     @PrimaryKey(autoGenerate = true)
     var bookingId:Int = 0

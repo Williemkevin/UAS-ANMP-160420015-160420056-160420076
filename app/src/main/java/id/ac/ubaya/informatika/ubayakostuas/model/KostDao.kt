@@ -22,5 +22,4 @@ interface KostDao {
 
     @Delete
     fun deleteKost(kost: Kost)
-
 }
