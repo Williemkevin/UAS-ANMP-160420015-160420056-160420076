@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import id.ac.ubaya.informatika.ubayakostuas.R
-import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.ListViewModel
 
 

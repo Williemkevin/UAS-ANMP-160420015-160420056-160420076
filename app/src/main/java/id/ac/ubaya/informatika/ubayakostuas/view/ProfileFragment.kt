@@ -3,27 +3,18 @@ package id.ac.ubaya.informatika.ubayakostuas.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceManager
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.google.android.material.textfield.TextInputEditText
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentProfileBinding
-import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.model.User
-import id.ac.ubaya.informatika.ubayakostuas.util.loadImage
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.UserViewModel
 
 class ProfileFragment : Fragment(), ProfileInterface {
@@ -49,6 +40,7 @@ class ProfileFragment : Fragment(), ProfileInterface {
         dataBinding.save = this
         dataBinding.aboutListener = this
         dataBinding.logoutListener = this
+        dataBinding.changePasswordListener = this
 
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
         viewModel.getData(idUser)
@@ -83,11 +75,16 @@ class ProfileFragment : Fragment(), ProfileInterface {
         sharedPreferences = requireContext().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.remove("login")
+        editor.remove("idUser")
         editor.apply()
     }
 
     override fun changePasswordClick(v: View) {
-       val action = ProfileFragmentDirections.actionChangePassword(Global.id)
+        var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
+        sharedPreferences = requireContext().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        var idUser = sharedPreferences.getInt("idUser",0)
+
+       val action = ProfileFragmentDirections.actionChangePassword(idUser)
        Navigation.findNavController(v).navigate(action)
     }
 }

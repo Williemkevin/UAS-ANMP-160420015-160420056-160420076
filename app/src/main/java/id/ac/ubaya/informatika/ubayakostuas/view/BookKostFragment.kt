@@ -15,8 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentBookKostBinding
-import id.ac.ubaya.informatika.ubayakostuas.model.Global
-import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
 import id.ac.ubaya.informatika.ubayakostuas.util.NotifHelper
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
@@ -26,9 +24,9 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
     private lateinit var detailModel: DetailViewModel
     private lateinit var dataBinding: FragmentBookKostBinding
     private lateinit var sharedPreferences: SharedPreferences
-    var year = 0
-    var month = 0
-    var day = 0
+    var year = Calendar.getInstance().get(Calendar.YEAR)
+    var month = Calendar.getInstance().get(Calendar.MONTH)
+    var day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +45,9 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
         detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
         detailModel.fetch(idKost)
 
+//        year = Calendar.getInstance().get(Calendar.YEAR)
+//        month = Calendar.getInstance().get(Calendar.MONTH)
+//        day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
         dataBinding.bookKost = UserBookKost(0,0,0,0)
 
         dataBinding.dateListener = this
@@ -101,11 +102,14 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
         c.set(year,month,day,0,0,0)
         var date = (c.timeInMillis/1000L).toInt()
 
-        obj.userId = Global.id
         obj.tanggalMasuk = date
         obj.idKost = v.tag as Int
 
-        val bookKost = UserBookKost(date,obj.lamaSewa, obj.userId, obj.idKost)
+        var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
+        sharedPreferences = requireContext().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        var idUser = sharedPreferences.getInt("idUser",0)
+
+        val bookKost = UserBookKost(date,obj.lamaSewa, idUser, obj.idKost)
 
         detailModel.addBookKost(bookKost)
         Toast.makeText(v.context, "Booking Success", Toast.LENGTH_LONG).show()

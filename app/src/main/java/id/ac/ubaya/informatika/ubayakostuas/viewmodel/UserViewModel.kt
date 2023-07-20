@@ -1,11 +1,8 @@
 package id.ac.ubaya.informatika.ubayakostuas.viewmodel
 
 import android.app.Application
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.room.Room
 import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.model.User
 import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
@@ -13,7 +10,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
 import kotlin.coroutines.CoroutineContext
 
 class UserViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
