@@ -1,16 +1,13 @@
 package id.ac.ubaya.informatika.ubayakostuas.view
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,11 +17,15 @@ import id.ac.ubaya.informatika.ubayakostuas.databinding.FragmentBookKostBinding
 import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.DetailViewModel
+import java.util.*
 
-class BookKostFragment : Fragment() {
+class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateSetListener {
     private lateinit var detailModel: DetailViewModel
     private lateinit var dataBinding: FragmentBookKostBinding
     private lateinit var sharedPreferences: SharedPreferences
+    var year = 0
+    var month = 0
+    var day = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +38,8 @@ class BookKostFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        dataBinding.dateListener = this
 
         val idKost = BookKostFragmentArgs.fromBundle(requireArguments()).idKost
 
@@ -59,9 +62,12 @@ class BookKostFragment : Fragment() {
 
         btnBook?.setOnClickListener {
             val sewa = if (rdoBulan!!.isChecked) 1 else 2
+            val c = Calendar.getInstance()
+            c.set(year,month,day,0,0,0)
+            var date = (c.timeInMillis/1000L).toInt()
 
             detailModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-            val bookKost = UserBookKost(12,sewa, Global.id,idKost)
+            val bookKost = UserBookKost(date,sewa, Global.id,idKost)
             detailModel.addBookKost(bookKost)
         }
 
@@ -71,6 +77,25 @@ class BookKostFragment : Fragment() {
         detailModel.kostLD.observe(viewLifecycleOwner, Observer {
             dataBinding.kost = it
         })
+    }
+
+    override fun onDateSet(p0: DatePicker?, year: Int, month: Int, day: Int) {
+        dataBinding!!.txtDate.setText(
+            day.toString().padStart(2,'0') + "/" + month.toString().padStart(2,'0') + "/" + year
+        )
+        this.year = year
+        this.month = month
+        this.day = day
+    }
+
+    override fun onDateClck(v: View) {
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+        activity?.let {
+                it1 -> DatePickerDialog(it1, this, year, month, day).show()
+        }
     }
 
 }

@@ -7,11 +7,6 @@ import java.text.DecimalFormat
 
 interface KostListInterface {
     fun onDetailClick(v: View)
-
-    fun formatHarga(harga: Int): String? {
-        val decimalFormat = DecimalFormat("##,###")
-        return "Rp " + decimalFormat.format(harga)
-    }
 }
 interface BookInterface {
     fun onDetailClick(v: View)
@@ -35,4 +30,8 @@ interface ProfileInterface{
     fun onUserSaveClick(v: View, obj: User)
     fun aboutClick(v: View)
     fun logoutClick(v: View)
+}
+
+interface DateClickListener{
+    fun onDateClck(v:View)
 }

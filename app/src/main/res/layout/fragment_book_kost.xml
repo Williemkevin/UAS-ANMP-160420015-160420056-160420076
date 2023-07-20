@@ -10,6 +10,9 @@
         <variable
             name="bookListener"
             type="id.ac.ubaya.informatika.ubayakostuas.view.BookInterface" />
+        <variable
+            name="dateListener"
+            type="id.ac.ubaya.informatika.ubayakostuas.view.DateClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -107,7 +110,7 @@
                     android:id="@+id/textView30"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="30dp"
                     android:text="Tanggal Masuk: "
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/txtHargaBookKost"
@@ -128,16 +131,18 @@
 
                 <RadioGroup
                     android:id="@+id/radioGroupSewa"
-                    android:layout_width="283dp"
-                    android:layout_height="90dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView30">
+                    app:layout_constraintTop_toBottomOf="@+id/textInputLayout14">
 
                     <RadioButton
                         android:id="@+id/rdoBookBulan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="16dp"
                         android:checked="true"
                         android:text="Per Bulan"
@@ -145,12 +150,38 @@
 
                     <RadioButton
                         android:id="@+id/rdoBookMinggu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
                         android:text="Per Minggu"
                         android:textSize="16sp" />
                 </RadioGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout14"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="8dp"
+                    app:endIconDrawable="@drawable/baseline_calendar_today_24"
+                    app:endIconMode="custom"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView30"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/txtDate"
+                        android:onClick="@{dateListener::onDateClck}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="true"
+                        android:focusable="false"
+                        android:hint="Pick Date"/>
+                </com.google.android.material.textfield.TextInputLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
