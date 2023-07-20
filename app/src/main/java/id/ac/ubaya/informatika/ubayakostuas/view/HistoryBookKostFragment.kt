@@ -57,9 +57,9 @@ class HistoryBookKostFragment : Fragment() {
             val recView = view?.findViewById<RecyclerView>(R.id.recViewListBookKost)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressLoadBookKost)
             if(it.isEmpty()) {
-                txtError?.visibility = View.VISIBLE
-                recView?.visibility = View.GONE
-                progressLoad?.visibility = View.VISIBLE
+                txtError?.text = "Belum pernah melakukan booking kost"
+                recView?.visibility = View.VISIBLE
+                progressLoad?.visibility = View.GONE
             } else {
                 txtError?.visibility = View.GONE
                 recView?.visibility = View.VISIBLE
