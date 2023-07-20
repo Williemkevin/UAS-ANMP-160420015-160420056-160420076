@@ -52,10 +52,10 @@ class UserViewModel(application: Application):AndroidViewModel(application), Cor
         }
     }
 
-    fun changePassword(curPass:String,newPass:String){
+    fun changePassword(newPass:String, idUser: Int){
         launch {
             val db = buildDb(getApplication())
-            val user =  db.userDao().changePasswordUser(newPass,Global.id)
+            val user =  db.userDao().changePasswordUser(newPass,idUser)
         }
     }
 }
