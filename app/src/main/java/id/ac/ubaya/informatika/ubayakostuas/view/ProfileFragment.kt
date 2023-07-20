@@ -41,6 +41,9 @@ class ProfileFragment : Fragment(), ProfileInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
+        sharedPreferences = requireContext().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+        var idUser = sharedPreferences.getInt("idUser",0)
 
         dataBinding.radioListener = this
         dataBinding.save = this
@@ -48,10 +51,9 @@ class ProfileFragment : Fragment(), ProfileInterface {
         dataBinding.logoutListener = this
 
         viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        viewModel.getData(Global.id)
+        viewModel.getData(idUser)
 
         observeViewModel()
-
     }
     fun observeViewModel() {
         viewModel.userLD.observe(viewLifecycleOwner, Observer {

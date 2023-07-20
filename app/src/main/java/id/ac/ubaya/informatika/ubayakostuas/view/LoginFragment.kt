@@ -44,19 +44,20 @@ class LoginFragment : Fragment() {
             var textInputEmail = view?.findViewById<TextInputEditText>(R.id.editTextEmailLogin)
             var textInputPassword = view?.findViewById<TextInputEditText>(R.id.editTextPasswordLogin)
 
+            var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
+            val sharedPreferences = requireActivity().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
+
             userViewModel.checkLogin(textInputEmail?.text.toString(), textInputPassword?.text.toString())
             userViewModel.checkLogin.observe(this) { checkLogin ->
                 if (checkLogin) {
-                    var sharedFile = "id.ac.ubaya.informatika.ubayakostuas"
-                    val sharedPreferences = requireActivity().getSharedPreferences(sharedFile, Context.MODE_PRIVATE)
                     var editor: SharedPreferences.Editor = sharedPreferences.edit()
                     editor.putBoolean("login", true)
-
-                    userViewModel.userId.observe(this) { userId ->
-                        editor.putInt("idUser", userId)
-                        Global.id = userId
-                    }
                     editor.apply()
+
+                    userViewModel.userId.observe(viewLifecycleOwner) { userId ->
+                        editor.putInt("idUser", userId)
+                        editor.apply()
+                    }
 
                     val action = LoginFragmentDirections.actionHome()
                     Navigation.findNavController(it).navigate(action)
