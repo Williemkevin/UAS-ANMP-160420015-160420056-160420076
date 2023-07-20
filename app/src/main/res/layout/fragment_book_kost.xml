@@ -111,52 +111,44 @@
                     app:layout_constraintStart_toStartOf="@+id/txtHargaBookKost"
                     app:layout_constraintTop_toBottomOf="@+id/txtHargaBookKost" />
 
-                <EditText
-                    android:id="@+id/txtDateMasuk"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:ems="10"
-                    android:inputType="date"
-                    android:text="dd mm yyyy"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/txtHargaBookKost" />
-
-                <RadioButton
-                    android:id="@+id/rdoBookBulan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="Per Bulan"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/textView30"
-                    app:layout_constraintTop_toBottomOf="@+id/textView30" />
-
-                <RadioButton
-                    android:id="@+id/rdoBookMinggu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:text="Per Minggu"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toEndOf="@+id/rdoBookBulan"
-                    app:layout_constraintTop_toTopOf="@+id/rdoBookBulan" />
-
                 <Button
                     android:id="@+id/btnBook"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="8dp"
                     android:text="Apply for Booking"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rdoBookMinggu" />
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroupSewa" />
 
+                <RadioGroup
+                    android:id="@+id/radioGroupSewa"
+                    android:layout_width="283dp"
+                    android:layout_height="90dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView30">
+
+                    <RadioButton
+                        android:id="@+id/rdoBookBulan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:checked="true"
+                        android:text="Per Bulan"
+                        android:textSize="16sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdoBookMinggu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Per Minggu"
+                        android:textSize="16sp" />
+                </RadioGroup>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
