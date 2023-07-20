@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso
 import id.ac.ubaya.informatika.ubayakostuas.R
 import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 fun ImageView.loadImage(url: String?, progressBar:ProgressBar){
     Picasso.get()
@@ -82,4 +84,21 @@ fun format(textView: TextView, harga: Int) {
     val decimalFormat = DecimalFormat("##,###")
     val formattedHarga = "Rp. " + decimalFormat.format(harga)
     textView.text = formattedHarga
+}
+
+@BindingAdapter("android:startBooking")
+fun startBooking(textView: TextView, tanggal: Int) {
+    val date = tanggal.toLong() * 1000
+    val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+    textView.text = dateFormat.format(Date(date))
+}
+
+@BindingAdapter("android:lamaSewa", "android:bookingAwal")
+fun tanggalBerakhir(textView: TextView, lamaSewa: Int, bookingAwal:Int) {
+    if(lamaSewa == 0){
+        val end = bookingAwal + 2592000000
+        val date = end * 1000
+        val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+        textView.text = dateFormat.format(Date(date))
+    }
 }

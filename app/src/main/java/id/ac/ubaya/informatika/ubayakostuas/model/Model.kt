@@ -1,6 +1,7 @@
 package id.ac.ubaya.informatika.ubayakostuas.model
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.Date
@@ -67,9 +68,17 @@ data class UserBookKost(
     var lamaSewa: Int,
     @ColumnInfo(name = "userId")
     var userId: Int,
-    @ColumnInfo(name = "idKost")
+    @ColumnInfo(name = "user_book_kost_id_kost")
     var idKost: Int,
 ){
     @PrimaryKey(autoGenerate = true)
     var bookingId:Int = 0
 }
+
+data class UserBookKostWithKost(
+    @Embedded
+    val userBookKost: UserBookKost,
+
+    @Embedded
+    val kost: Kost
+)

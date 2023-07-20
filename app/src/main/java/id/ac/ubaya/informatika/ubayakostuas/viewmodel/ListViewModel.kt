@@ -11,9 +11,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import id.ac.ubaya.informatika.ubayakostuas.model.Kost
-import id.ac.ubaya.informatika.ubayakostuas.model.KostDatabase
-import id.ac.ubaya.informatika.ubayakostuas.model.User
+import id.ac.ubaya.informatika.ubayakostuas.model.*
 import id.ac.ubaya.informatika.ubayakostuas.util.buildDb
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +21,7 @@ import kotlin.coroutines.CoroutineContext
 
 class ListViewModel(application: Application):AndroidViewModel(application), CoroutineScope {
     val kostsLD = MutableLiveData<List<Kost>>()
+    val bookLD = MutableLiveData<List<UserBookKostWithKost>>()
     val kostLoadErrorLD = MutableLiveData<Boolean>()
     val loadingLD = MutableLiveData<Boolean>()
     private var job = Job()
@@ -46,10 +45,8 @@ class ListViewModel(application: Application):AndroidViewModel(application), Cor
 
         launch {
             val db = buildDb(getApplication())
-            kostsLD.postValue(db.userBookKost().selectBookKost(idUser))
+            bookLD.postValue(db.userBookKost().selectBookKost(idUser))
         }
     }
-
-
 
 }

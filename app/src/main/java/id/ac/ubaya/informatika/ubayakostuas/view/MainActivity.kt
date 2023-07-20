@@ -71,10 +71,10 @@ class MainActivity : AppCompatActivity() {
 //
 //        viewModelUser = ViewModelProvider(this).get(UserViewModel::class.java)
 //        val user = listOf(
-//            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1, "")
+//            User("Budi", "budi@gmail.com", "08487854688", "budi", "budi123", 1, "https://media.istockphoto.com/id/1338134336/photo/headshot-portrait-african-30s-man-smile-look-at-camera.jpg?b=1&s=170667a&w=0&k=20&c=j-oMdWCMLx5rIx-_W33o3q3aW9CiAWEvv9XrJQ3fTMU=")
 //        )
 //        viewModelUser.addUser(user)
-
+//
 //        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
 //        val bookKost = UserBookKost(12,13,14,15)
 //        viewModel.addBookKost(bookKost)

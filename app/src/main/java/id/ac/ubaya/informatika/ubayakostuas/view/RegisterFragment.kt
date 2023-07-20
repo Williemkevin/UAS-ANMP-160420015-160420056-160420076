@@ -35,7 +35,7 @@ class RegisterFragment : Fragment(), RegisterInterface {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
-        dataBinding.user = User("","","","","",3, "")
+        dataBinding.user = User("","","","","",3, "https://media.istockphoto.com/id/1338134336/photo/headshot-portrait-african-30s-man-smile-look-at-camera.jpg?b=1&s=170667a&w=0&k=20&c=j-oMdWCMLx5rIx-_W33o3q3aW9CiAWEvv9XrJQ3fTMU=")
         dataBinding.register = this
         dataBinding.radioListener = this
     }

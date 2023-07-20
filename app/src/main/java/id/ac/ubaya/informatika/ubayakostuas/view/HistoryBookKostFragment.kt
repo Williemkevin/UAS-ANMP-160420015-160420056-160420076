@@ -51,7 +51,7 @@ class HistoryBookKostFragment : Fragment() {
     }
 
     fun observeViewModel(){
-        viewModel.kostsLD.observe(viewLifecycleOwner, Observer {
+        viewModel.bookLD.observe(viewLifecycleOwner, Observer {
             bookListAdapter.updateHistoryKost(it)
             val txtError = view?.findViewById<TextView>(R.id.txtErrorBookKost)
             val recView = view?.findViewById<RecyclerView>(R.id.recViewListBookKost)

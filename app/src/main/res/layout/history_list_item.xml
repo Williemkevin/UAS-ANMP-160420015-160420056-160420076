@@ -7,6 +7,12 @@
         <variable
             name="kost"
             type="id.ac.ubaya.informatika.ubayakostuas.model.Kost" />
+        <variable
+            name="bookKost"
+            type="id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost" />
+        <variable
+            name="bookKostWithKost"
+            type="id.ac.ubaya.informatika.ubayakostuas.model.UserBookKostWithKost" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +40,7 @@
                     android:id="@+id/imageViewHistoryKost"
                     android:layout_width="0dp"
                     android:layout_height="182dp"
-                    android:imageUrl="@{kost.picture}"
+                    android:imageUrl="@{bookKostWithKost.kost.picture}"
                     android:progressBar="@{progressBarHistory}"
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +55,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="20dp"
                     android:fontFamily="monospace"
-                    android:text="@{kost.nama}"
+                    android:text="@{bookKostWithKost.kost.nama}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:text="dd mm yyyy"
+                    android:startBooking="@{bookKostWithKost.userBookKost.tanggalMasuk}"
                     android:textColor="@color/black"
                     android:textSize="10dp"
                     app:layout_constraintStart_toEndOf="@+id/textView34"
@@ -73,7 +79,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:fontFamily="monospace"
-                    android:text="20 Days"
+                    android:lamaSewa="@{bookKostWithKost.userBookKost.lamaSewa}"
+                    android:bookingAwal="@{bookKostWithKost.userBookKost.tanggalMasuk}"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textSize="10sp"
                     android:textStyle="normal"
