@@ -34,7 +34,7 @@ class HistoryBookKostFragment : Fragment() {
         viewModel.getHistoryBookKost(1)
 
         val recView = view.findViewById<RecyclerView>(R.id.recViewListBookKost)
-        recView.layoutManager = GridLayoutManager(context, 2)
+        recView.layoutManager = GridLayoutManager(context, 1)
         recView.adapter = bookListAdapter
 
         observeViewModel()
@@ -43,7 +43,7 @@ class HistoryBookKostFragment : Fragment() {
             recView.visibility = View.GONE
             view.findViewById<TextView>(R.id.txtErrorBookKost).visibility = View.GONE
             view.findViewById<ProgressBar>(R.id.progressLoadBookKost).visibility = View.VISIBLE
-            viewModel.refresh()
+            viewModel.getHistoryBookKost(1)
             view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutHistoryBook).isRefreshing = false
         }
     }

@@ -46,7 +46,7 @@ class ListViewModel(application: Application):AndroidViewModel(application), Cor
 
         launch {
             val db = buildDb(getApplication())
-            kostsLD.postValue(db.userBookKost().selectBookKost(1))
+            kostsLD.postValue(db.userBookKost().selectBookKost(idUser))
         }
     }
 
