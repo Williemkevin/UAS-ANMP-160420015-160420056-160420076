@@ -38,6 +38,7 @@ interface ProfileInterface{
     fun onUserSaveClick(v: View, obj: User)
     fun aboutClick(v: View)
     fun logoutClick(v: View)
+    fun changePasswordClick(v:View)
 }
 
 interface DateClickListener{

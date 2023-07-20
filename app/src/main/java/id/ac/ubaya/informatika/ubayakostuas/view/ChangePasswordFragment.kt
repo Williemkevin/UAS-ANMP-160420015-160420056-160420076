@@ -38,5 +38,6 @@ class ChangePasswordFragment : Fragment() {
 
             userViewModel.changePassword(textInputCurrent?.text.toString(), textInputNew?.text.toString())
         }
+
     }
 }

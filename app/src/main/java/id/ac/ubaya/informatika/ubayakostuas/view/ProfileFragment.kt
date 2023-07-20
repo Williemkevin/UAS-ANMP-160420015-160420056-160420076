@@ -83,4 +83,9 @@ class ProfileFragment : Fragment(), ProfileInterface {
         editor.remove("login")
         editor.apply()
     }
+
+    override fun changePasswordClick(v: View) {
+       val action = ProfileFragmentDirections.actionChangePassword(Global.id)
+       Navigation.findNavController(v).navigate(action)
+    }
 }

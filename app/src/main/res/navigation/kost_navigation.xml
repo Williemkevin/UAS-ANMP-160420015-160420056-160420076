@@ -17,7 +17,6 @@
         <action
             android:id="@+id/action_itemHome_to_loginFragment"
             app:destination="@id/loginFragment" />
-        =======
 
     </fragment>
     <fragment
@@ -49,6 +48,9 @@
         <action
             android:id="@+id/actionLoginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/actionChangePassword"
+            app:destination="@id/changePasswordFragment"/>
     </fragment>
     <fragment
         android:id="@+id/itemSearch"
@@ -121,4 +123,14 @@
         android:name="id.ac.ubaya.informatika.ubayakostuas.view.HistoryBookKostFragment"
         android:label="fragment_history_book_kost"
         tools:layout="@layout/fragment_history_book_kost" />
+
+    <fragment
+        android:id="@+id/changePasswordFragment"
+        android:name="id.ac.ubaya.informatika.ubayakostuas.view.ChangePasswordFragment"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <argument
+            android:name="idUser"
+            app:argType="integer" />
+    </fragment>
 </navigation>
