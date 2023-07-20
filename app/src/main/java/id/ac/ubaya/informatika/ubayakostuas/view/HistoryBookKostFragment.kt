@@ -10,9 +10,11 @@ import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import id.ac.ubaya.informatika.ubayakostuas.R
+import id.ac.ubaya.informatika.ubayakostuas.model.Global
 import id.ac.ubaya.informatika.ubayakostuas.viewmodel.ListViewModel
 
 class HistoryBookKostFragment : Fragment() {
@@ -31,10 +33,10 @@ class HistoryBookKostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
-        viewModel.getHistoryBookKost(1)
+        viewModel.getHistoryBookKost(Global.id)
 
         val recView = view.findViewById<RecyclerView>(R.id.recViewListBookKost)
-        recView.layoutManager = GridLayoutManager(context, 1)
+        recView.layoutManager = LinearLayoutManager(context)
         recView.adapter = bookListAdapter
 
         observeViewModel()
@@ -43,13 +45,14 @@ class HistoryBookKostFragment : Fragment() {
             recView.visibility = View.GONE
             view.findViewById<TextView>(R.id.txtErrorBookKost).visibility = View.GONE
             view.findViewById<ProgressBar>(R.id.progressLoadBookKost).visibility = View.VISIBLE
-            viewModel.getHistoryBookKost(1)
+            viewModel.getHistoryBookKost(Global.id)
             view.findViewById<SwipeRefreshLayout>(R.id.refreshLayoutHistoryBook).isRefreshing = false
         }
     }
 
     fun observeViewModel(){
         viewModel.kostsLD.observe(viewLifecycleOwner, Observer {
+            bookListAdapter.updateHistoryKost(it)
             val txtError = view?.findViewById<TextView>(R.id.txtErrorBookKost)
             val recView = view?.findViewById<RecyclerView>(R.id.recViewListBookKost)
             val progressLoad = view?.findViewById<ProgressBar>(R.id.progressLoadBookKost)
