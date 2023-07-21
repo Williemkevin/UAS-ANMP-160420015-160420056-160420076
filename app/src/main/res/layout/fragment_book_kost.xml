@@ -11,6 +11,9 @@
             name="bookKost"
             type="id.ac.ubaya.informatika.ubayakostuas.model.UserBookKost" />
         <variable
+            name="userBookKostWithKost"
+            type="id.ac.ubaya.informatika.ubayakostuas.model.UserBookKostWithKost" />
+        <variable
             name="bookListener"
             type="id.ac.ubaya.informatika.ubayakostuas.view.BookInterface" />
         <variable
@@ -130,7 +133,7 @@
                     android:layout_marginEnd="32dp"
                     android:layout_marginBottom="8dp"
                     android:text="Apply for Booking"
-                    android:onClick="@{(view)->bookListener.onBookClick(view,bookKost)}"
+                    android:onClick="@{(view)->bookListener.onBookClick(view,userBookKostWithKost)}"
                     android:tag="@{kost.idKost}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -154,8 +157,8 @@
                         android:layout_marginTop="16dp"
                         android:checked="true"
                         android:text="Per Bulan"
-                        android:onClick="@{(view)->radioListener.onRadioClick(view,1, bookKost)}"
-                        android:tag="1"
+                        android:onClick="@{(view)->radioListener.onRadioClick(view,0, bookKost)}"
+                        android:tag="0"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -164,8 +167,8 @@
                         android:layout_height="match_parent"
                         android:layout_marginStart="16dp"
                         android:text="Per Minggu"
-                        android:onClick="@{(view)->radioListener.onRadioClick(view,2, bookKost)}"
-                        android:tag="2"
+                        android:onClick="@{(view)->radioListener.onRadioClick(view,1, bookKost)}"
+                        android:tag="1"
                         android:textSize="16sp" />
                 </RadioGroup>
 

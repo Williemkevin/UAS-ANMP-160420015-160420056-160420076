@@ -101,7 +101,7 @@ fun tanggalBerakhir(textView: TextView, lamaSewa: Int, bookingAwal:Int) {
         c.add(Calendar.MONTH, 1)
         val dateFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
         textView.text = dateFormat.format(c.time)
-    } else if(lamaSewa == 2){
+    } else if(lamaSewa == 1){
         val c = Calendar.getInstance()
         c.timeInMillis = bookingAwal.toLong() * 1000
         c.add(Calendar.WEEK_OF_MONTH, 1)
