@@ -48,8 +48,7 @@ class ChangePasswordFragment : Fragment() {
                 userViewModel.getData(idUser)
                 userViewModel.userLD.observe(viewLifecycleOwner, Observer {
                     if (it.password == textInputCurrent?.text.toString()) {
-                        Toast.makeText(context, idUser.toString(), Toast.LENGTH_SHORT).show()
-                        userViewModel.changePassword(textInputCurrent?.text.toString(), idUser)
+                        userViewModel.changePassword(textInputNew?.text.toString(), idUser)
                         Toast.makeText(context, "Change Password Success", Toast.LENGTH_SHORT).show()
 
                         val action = ChangePasswordFragmentDirections.actionChangePasswordFragmentToItemProfile()
