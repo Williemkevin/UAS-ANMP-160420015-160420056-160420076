@@ -115,7 +115,12 @@ class BookKostFragment : Fragment(), DateClickListener, DatePickerDialog.OnDateS
         Toast.makeText(v.context, "Booking Success", Toast.LENGTH_LONG).show()
         Navigation.findNavController(v).popBackStack()
 
-        NotifHelper(v.context).createNotification("Booking Kost Berhasil", "Terimakasih sudah melakukan booking kost")
+        detailModel.fetch(idUser)
+        var namaKost = ""
+        detailModel.kostLD.observe(viewLifecycleOwner, Observer {
+            namaKost = it.nama.toString()
+        })
+        NotifHelper(v.context).createNotification("Booking Kost" + namaKost +" Berhasil", "Terimakasih sudah melakukan booking kost" + namaKost)
     }
 
 }
