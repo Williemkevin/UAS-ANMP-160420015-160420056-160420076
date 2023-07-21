@@ -44,3 +44,9 @@ interface ProfileInterface{
 interface DateClickListener{
     fun onDateClck(v:View)
 }
+
+interface LoginInterface{
+    fun onLoginClick(v: View, obj: User)
+
+    fun registerClick(v: View)
+}
